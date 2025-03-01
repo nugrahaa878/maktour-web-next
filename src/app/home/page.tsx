@@ -2,6 +2,7 @@ import GallerySection from "./components/GallerySection";
 import HeroSection from "./components/HeroSection";
 import PackageHighlights from "./components/PackageHighlight";
 import ServicesOverview from "./components/ServiceOverview";
+import VisaRequirements from "./components/VisaRequirements";
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
       <PackageHighlights />
       <ServicesOverview />
       <GallerySection />
-      {/* <VisaRequirements /> */}
+      <VisaRequirements />
     </main>
   );
 }
