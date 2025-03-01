@@ -6,7 +6,6 @@ interface DesktopGalleryProps {
 }
 
 export const DesktopGallery = ({ images }: DesktopGalleryProps) => {
-  console.log('999 ini images', images);
   return (
     <div className="hidden md:grid grid-cols-3 gap-4">
       {images.map((image) => (
