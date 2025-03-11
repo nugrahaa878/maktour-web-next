@@ -37,7 +37,7 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 href={item.path}
-                className="text-[#FFF9F9] hover:text-[#E7BB56] px-3 py-2 text-md font-medium transition-colors duration-200"
+                className="text-[#FFF9F9] hover:text-amber-500 px-3 py-2 text-md font-medium transition-colors duration-200"
               >
                 {item.name}
               </Link>
@@ -46,6 +46,9 @@ const Navbar = () => {
 
           {/* Right side buttons */}
           <div className="hidden md:flex items-center space-x-4">
+            <button className="text-[#FFF9F9] hover:text-amber-500 px-3 py-2 text-sm font-medium transition-colors duration-200">
+              EN
+            </button>
             <a
               href="https://wa.me/+6281234567890"
               target="_blank"
