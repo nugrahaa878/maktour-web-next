@@ -1,34 +1,33 @@
 import Link from 'next/link'
 import Image from 'next/image';
 import MobileMenuButton from './MobileMenuButton';
-import maktourLogo from '../../../public/assets/icons/favicon-maktour.png';
+import maktourLogo from '../../../public/assets/images/maktour-logo.png';
+import whatsappIcon from '../../../public/assets/icons/whatsapp.png';
 
 const menuItems = [
-  { name: 'The Journey', path: '/journey' },
-  { name: 'Serviced Countries', path: '/countries' },
-  { name: 'Packages', path: '/packages' },
-  { name: 'Service Providers', path: '/providers' },
-  { name: 'Hajj Guidelines', path: '/guidelines' },
+  { name: 'About Us', path: '/journey' },
+  { name: 'Umrah & Ziyarah', path: '/countries' },
+  { name: 'Hajj', path: '/packages' },
+  { name: 'Packages', path: '/providers' },
+  { name: 'Plan With Us', path: '/guidelines' },
+  { name: 'FAQ', path: '/faq' },
 ];
 
 const Navbar = () => {
   return (
-    <nav className="bg-white shadow-md fixed w-full top-0 z-50">
+    <nav className="bg-transparent fixed w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
+        <div className="flex justify-between h-16 items-center mt-4">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center">
               <Image
                 src={maktourLogo}
                 alt="Maktour Hajj Logo"
-                width={32}
-                height={32}
-                className="h-8 w-auto"
+                width={256}
+                height={256}
+                className="h-24 w-auto"
               />
-              <span className="ml-2 text-xl font-semibold text-gray-800">
-                Maktour Hajj
-              </span>
             </Link>
           </div>
 
@@ -38,7 +37,7 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 href={item.path}
-                className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium"
+                className="text-[#FFF9F9] hover:text-[#E7BB56] px-3 py-2 text-md font-medium transition-colors duration-200"
               >
                 {item.name}
               </Link>
@@ -47,15 +46,15 @@ const Navbar = () => {
 
           {/* Right side buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium">
-              EN
-            </button>
-            <Link
-              href="/login"
-              className="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary/90 transition-colors"
+            <a
+              href="https://wa.me/+6281234567890"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-green-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-colors duration-200 flex items-center space-x-2"
             >
-              Login
-            </Link>
+              <Image src={whatsappIcon} alt='whatsapp' className='w-6' />
+              <span className='font-bold'>Contact Us</span>
+            </a>
           </div>
 
           {/* Mobile Menu */}
