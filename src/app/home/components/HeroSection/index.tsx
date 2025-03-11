@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import heroImage from '../../../../../public/assets/images/hero.jpg';
+import heroImage from '../../../../../public/assets/images/kabah.png';
 import Image from 'next/image';
 import { ExploreButton } from './ExploreButton';
 
