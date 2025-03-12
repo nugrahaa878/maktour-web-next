@@ -8,11 +8,11 @@ const GallerySection = () => {
   return (
     <section className="py-16 px-4 bg-gray-50">
       <div className="container mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-emerald-800">
-          Gallery of Previous Trips
+        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-[#001D0F] abhaya-libre">
+          Captured Blessings
         </h2>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-          Explore the memorable moments from our previous Hajj and Umrah journeys, where faith and community come together in the holy lands.
+        <p className="text-center text-gray-600 mb-12 max-w-4xl mx-auto">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
         </p>
 
         <DesktopGallery images={images} />
