@@ -56,8 +56,8 @@ const PackageHighlights: FC = () => {
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Featured Packages
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 abhaya-libre">
+            Our Special Package
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Choose from our carefully curated packages designed to provide you with the best spiritual journey experience
@@ -68,33 +68,38 @@ const PackageHighlights: FC = () => {
           {packages.map((pkg, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2"
+              className="relative h-[500px] rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2"
             >
-              <div className="relative h-48">
-                <Image
-                  src={pkg.image}
-                  alt={pkg.title}
-                  fill
-                  className="object-cover" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{pkg.title}</h3>
-                <p className="text-gray-600 mb-4">{pkg.description}</p>
+              <Image
+                src={pkg.image}
+                alt={pkg.title}
+                fill
+                className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+              <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                <h3 className="text-xl font-bold text-white mb-2">{pkg.title}</h3>
+                <p className="text-white/90 mb-4">{pkg.description}</p>
                 <div className="space-y-2 mb-6">
                   {pkg.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center space-x-2">
                       <span>{feature.icon}</span>
-                      <span className="text-gray-700">{feature.text}</span>
+                      <span className="text-white/90">{feature.text}</span>
                     </div>
                   ))}
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-lg font-bold text-emerald-600">{pkg.price}</span>
+                  <span className="text-lg font-bold text-white">{pkg.price}</span>
                   <BookingButton />
                 </div>
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <button className="bg-[#FFC100] text-[#232323] px-8 py-3 rounded-2xl font-medium transition-all duration-200 cursor-pointer hover:bg-[#FFD54F] hover:scale-105 hover:shadow-lg">
+            Explore More
+          </button>
         </div>
       </div>
     </section>
