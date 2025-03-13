@@ -3,6 +3,7 @@ import HeroSection from "./components/HeroSection";
 import PackageHighlights from "./components/PackageHighlight";
 import PlanWithUs from "./components/PlanWithUs";
 import VisaRequirements from "./components/VisaRequirements";
+import FaqSection from "./components/FaqSection";
 
 export default function Home() {
   return (
@@ -11,7 +12,9 @@ export default function Home() {
       <PackageHighlights />
       <GallerySection />
       <PlanWithUs />
+      <FaqSection />
       <VisaRequirements />
+      <FaqSection />
     </main>
   );
 }
