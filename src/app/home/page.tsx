@@ -1,6 +1,7 @@
 import GallerySection from "./components/GallerySection";
 import HeroSection from "./components/HeroSection";
 import PackageHighlights from "./components/PackageHighlight";
+import PlanWithUs from "./components/PlanWithUs";
 import VisaRequirements from "./components/VisaRequirements";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <HeroSection />
       <PackageHighlights />
       <GallerySection />
+      <PlanWithUs />
       <VisaRequirements />
     </main>
   );
