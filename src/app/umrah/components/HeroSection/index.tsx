@@ -1,18 +1,20 @@
 import { FC } from 'react';
 import Image from 'next/image';
+import { StaticImageData } from 'next/image';
 import heroImage from '../../../../../public/assets/images/kabah.png';
 
 interface HeroSectionProps {
   title: string;
   description: string;
   buttonText: string;
+  backgroundImage?: StaticImageData | string;
 }
 
-const HeroSection: FC<HeroSectionProps> = ({ title, description, buttonText }) => {
+const HeroSection: FC<HeroSectionProps> = ({ title, description, buttonText, backgroundImage = heroImage }) => {
   return (
     <section className="flex items-center relative py-30">
       <div className="absolute inset-0">
-        <Image src={heroImage} alt="Umrah Hero Background" className="w-full h-full object-cover" />
+        <Image src={backgroundImage} alt="Hero Background" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
