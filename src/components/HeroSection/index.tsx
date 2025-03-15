@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import { StaticImageData } from 'next/image';
-import heroImage from '../../../../../public/assets/images/kabah.png';
+import heroImage from '../../../public/assets/images/kabah.png';
 
 interface HeroSectionProps {
   title: string;

@@ -85,7 +85,7 @@ const Navbar = ({ isWhiteBackground = false }: NavbarProps) => {
           </div>
         </div>
       </nav>
-      {isWhiteBackground && <div className="h-24" />}
+      {isWhiteBackground && <div className="h-20" />}
     </>
   );
 };
