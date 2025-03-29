@@ -6,6 +6,7 @@ import FaqSection from "./components/FaqSection";
 import PlanWithUs from "@/components/PlanWithUs";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import BlogSection from "./components/BlogSection";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <PackageHighlights />
       <GallerySection />
       <PlanWithUs />
+      <BlogSection />
       <FaqSection />
       <Footer />
     </main>
