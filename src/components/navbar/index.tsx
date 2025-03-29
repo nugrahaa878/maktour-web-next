@@ -8,9 +8,9 @@ import maktourLogo from '../../../public/assets/images/maktour-logo.png';
 import whatsappIcon from '../../../public/assets/icons/whatsapp.png';
 
 const menuItems = [
-  { name: 'About Us', path: '/journey' },
-  { name: 'Umrah & Ziyarah', path: '/countries' },
-  { name: 'Hajj', path: '/packages' },
+  { name: 'About Us', path: '/about-us' },
+  { name: 'Umrah & Ziyarah', path: '/umrah' },
+  { name: 'Hajj', path: '/hajj' },
   { name: 'Packages', path: '/providers' },
   { name: 'Plan With Us', path: '/guidelines' },
   { name: 'FAQ', path: '/faq' },

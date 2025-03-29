@@ -16,8 +16,6 @@ export default function Home() {
       <GallerySection />
       <PlanWithUs />
       <FaqSection />
-      <VisaRequirements />
-      <FaqSection />
       <Footer />
     </main>
   );
