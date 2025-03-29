@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import BookingButton from './BookingButton';
+import Chip from '@/components/Chip';
 
 interface PackageFeature {
   icon: string;
@@ -8,6 +9,7 @@ interface PackageFeature {
 }
 
 interface Package {
+  type: string;
   title: string;
   image: string;
   description: string;
@@ -17,10 +19,11 @@ interface Package {
 
 const packages: Package[] = [
   {
+    type: 'Economy',
     title: 'Premium Hajj Package',
     image: '/assets/images/mekah-1.jpg',
     description: 'Experience the ultimate Hajj journey with premium accommodations and dedicated services',
-    price: 'Starting from $8,999',
+    price: 'USD 44.500 - 49.500 / Person',
     features: [
       { icon: '🏨', text: '5-star hotel accommodations' },
       { icon: '🍽️', text: 'Full-board meals' },
@@ -28,10 +31,11 @@ const packages: Package[] = [
     ]
   },
   {
+    type: 'Business',
     title: 'Standard Umrah Package',
     image: '/assets/images/mekah-2.jpg',
     description: 'Complete your Umrah with our comprehensive and comfortable package',
-    price: 'Starting from $3,999',
+    price: 'USD 44.500 - 49.500 / Person',
     features: [
       { icon: '🏨', text: '4-star hotel accommodations' },
       { icon: '✈️', text: 'Return flights included' },
@@ -39,10 +43,11 @@ const packages: Package[] = [
     ]
   },
   {
+    type: 'Economy',
     title: 'Family Umrah Package',
     image: '/assets/images/mekah-3.jpg',
     description: 'Special package designed for families with children-friendly accommodations',
-    price: 'Starting from $12,999',
+    price: 'USD 44.500 - 49.500 / Person',
     features: [
       { icon: '👨‍👩‍👧‍👦', text: 'Family rooms available' },
       { icon: '🍽️', text: 'Special meal options' },
@@ -77,18 +82,13 @@ const PackageHighlights: FC = () => {
                 className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
               <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                <Chip label={pkg.type} className='w-fit mb-2 -ml-1' variant='primary' />
                 <h3 className="text-xl font-bold text-white mb-2">{pkg.title}</h3>
                 <p className="text-white/90 mb-4">{pkg.description}</p>
                 <div className="space-y-2 mb-6">
-                  {pkg.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center space-x-2">
-                      <span>{feature.icon}</span>
-                      <span className="text-white/90">{feature.text}</span>
-                    </div>
-                  ))}
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-lg font-bold text-white">{pkg.price}</span>
+                  <span className="text-md text-white">{pkg.price}</span>
                   <BookingButton />
                 </div>
               </div>
