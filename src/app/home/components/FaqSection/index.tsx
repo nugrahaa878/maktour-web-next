@@ -40,17 +40,17 @@ const FaqSection: FC = () => {
 
   return (
     <section className="w-full py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12 md:mx-auto mx-2">
+      <div className="flex mx-auto px-4">
+        <div className="md:mx-auto mx-2 flex-1 pt-5 pl-10">
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 abhaya-libre">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Everything you need to know about our Hajj and Umrah services
+          <p className="text-md text-gray-600 max-w-2xl pr-32">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pharetra velit tempus felis placerat dignissim. Aenean tristique justo id dignissim malesuada. Etiam massa elit, scelerisque in eleifend sed, dictum vitae nisl. Suspendisse facilisis ante at dolor fringilla, id ultrices nisl tempor. Duis luctus eu sapien quis tincidunt. Done
           </p>
         </div>
 
-        <div className="mx-6 md:mx-auto">
+        <div className="mx-6 md:mx-auto flex-1">
           {faqs.map((faq, index) => (
             <div key={index} className="mb-4 border-b border-gray-200 pb-4">
               <button
