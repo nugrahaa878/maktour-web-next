@@ -52,7 +52,7 @@ const FaqSection: FC = () => {
 
         <div className="mx-6 md:mx-auto flex-1">
           {faqs.map((faq, index) => (
-            <div key={index} className="mb-4 border-b border-gray-200 pb-4">
+            <div key={index} className={`mb-4 rounded-2xl border-b px-4 border-gray-200 pb-4 ${activeIndex === index ? 'bg-gradient-to-r from-white to-[#FFF0BF]' : ''}`}>
               <button
                 onClick={() => toggleFaq(index)}
                 className="w-full flex items-center justify-between text-left py-4 focus:outline-none"
@@ -61,9 +61,9 @@ const FaqSection: FC = () => {
               >
                 <h3 className="text-lg md:text-xl font-semibold text-gray-900">{faq.question}</h3>
                 {activeIndex === index ? (
-                  <FaChevronUp className="text-[#FFC100] flex-shrink-0" />
+                  <FaChevronUp className="flex-shrink-0" />
                 ) : (
-                  <FaChevronDown className="text-[#FFC100] flex-shrink-0" />
+                  <FaChevronDown className="flex-shrink-0" />
                 )}
               </button>
               <div
