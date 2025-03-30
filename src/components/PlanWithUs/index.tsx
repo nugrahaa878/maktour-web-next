@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const PlanWithUs: FC = () => {
   return (
-    <section className="w-full py-12 md:py-16">
+    <section className="w-full py-12 md:py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="bg-gradient-to-r from-[#1D3D2D] to-[#4BA076] rounded-lg shadow-lg overflow-hidden">
           <div className="flex flex-col md:flex-row items-center justify-between p-8 md:px-20 md:py-12">
