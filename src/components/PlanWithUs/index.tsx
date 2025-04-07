@@ -1,7 +1,6 @@
 'use client';
 
 import { FC } from 'react';
-import Link from 'next/link';
 
 const PlanWithUs: FC = () => {
   return (
@@ -15,12 +14,14 @@ const PlanWithUs: FC = () => {
               </h2>
             </div>
             <div className="flex-shrink-0">
-              <Link
-                href="/contact"
+              <a
+                href="https://wa.me/6281268529556"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block bg-[#FFC100] text-[#232323] px-8 py-2 md:px-10 md:py-3 rounded-full font-medium text-lg transition-all duration-200 hover:bg-[#FFD54F] hover:scale-105 hover:shadow-lg"
               >
                 Plan with Us
-              </Link>
+              </a>
             </div>
           </div>
         </div>
