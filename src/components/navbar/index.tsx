@@ -70,7 +70,7 @@ const Navbar = ({ isWhiteBackground = false }: NavbarProps) => {
                 EN
               </button>
               <a
-                href="https://wa.me/+6281234567890"
+                href="https://wa.me/+6281268529556"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-colors duration-200 flex items-center space-x-2"
