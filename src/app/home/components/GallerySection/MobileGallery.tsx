@@ -11,6 +11,10 @@ interface MobileGalleryProps {
 export const MobileGallery = ({ images }: MobileGalleryProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  if (images.length === 0) {
+    return null;
+  }
+
   return (
     <div className="md:hidden w-full overflow-x-auto pb-6 -mx-4 px-4 scrollbar-hide">
       <div ref={scrollRef} className="flex space-x-4 w-max">

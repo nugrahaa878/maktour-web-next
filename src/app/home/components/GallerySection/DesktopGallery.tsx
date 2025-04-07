@@ -6,6 +6,11 @@ interface DesktopGalleryProps {
 }
 
 export const DesktopGallery = ({ images }: DesktopGalleryProps) => {
+  // Make sure we have enough images to display
+  if (images.length < 6) {
+    return null;
+  }
+
   return (
     <div className="hidden md:grid grid-cols-12 gap-4 auto-rows-[200px]">
       {/* First row */}
