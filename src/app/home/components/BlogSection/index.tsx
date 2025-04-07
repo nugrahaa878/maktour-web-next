@@ -48,14 +48,6 @@ const BlogSection: FC = () => {
               </div>
             ))}
           </div>
-
-          {/* Navigation Arrows */}
-          <button className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors">
-            <FaChevronLeft className="text-gray-600" />
-          </button>
-          <button className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors">
-            <FaChevronRight className="text-gray-600" />
-          </button>
         </div>
       </div>
     </section>
