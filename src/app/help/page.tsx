@@ -1,6 +1,7 @@
 import HeroSection from "@/components/HeroSection";
 import HeroSectionSearch from "@/components/HeroSectionSearch";
 import Navbar from "@/components/navbar";
+import TopicList from "@/components/TopicList";
 
 const HelpPage = () => {
   return (
@@ -10,6 +11,7 @@ const HelpPage = () => {
         title="Bantuan"
         description="Hi, apa yang dapat kami bantu?"
       />
+      <TopicList />
     </main>
   );
 }
