@@ -1,5 +1,5 @@
 const VisionMision = () => {
-  return <div className="container mx-auto px-4 sm:px-8 md:px-16 lg:px-36 py-16">
+  return <div className="container mx-auto px-4 sm:px-8 md:px-16 lg:px-36 py-16  ">
     <div className="flex flex-col md:flex-row gap-8">
       <div className="flex-1">
         <h2 className="text-2xl md:text-3xl font-bold abhaya-libre mb-6 text-center">Our Vision</h2>

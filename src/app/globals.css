@@ -17,11 +17,6 @@
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-}
-
 .abhaya-libre {
   font-family: var(--font-abhaya-libre), serif;
 }
