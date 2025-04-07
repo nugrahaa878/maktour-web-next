@@ -1,9 +1,12 @@
 'use client';
 
+import { useGetBlog } from '@/hooks/useGetBlog';
 import { FC } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const BlogSection: FC = () => {
+  const { data } = useGetBlog();
+
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
