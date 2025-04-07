@@ -12,7 +12,7 @@ const menuItems = [
   { name: 'Umrah & Ziyarah', path: '/umrah' },
   { name: 'Hajj', path: '/hajj' },
   { name: 'Packages', path: '/packages' },
-  { name: 'Plan With Us', path: '/guidelines' },
+  { name: 'Help', path: '/help' },
   { name: 'FAQ', path: '/faq' },
 ];
 
