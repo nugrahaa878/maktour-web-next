@@ -41,7 +41,7 @@ const FaqSection: FC = () => {
   const faqs = data?.data || fallbackFaqs;
 
   return (
-    <section className="w-full py-16 bg-white">
+    <section className="w-full py-16">
       <div className="flex mx-auto px-4">
         <div className="md:mx-auto mx-2 flex-1 pt-5 pl-10">
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 abhaya-libre">

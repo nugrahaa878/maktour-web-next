@@ -20,7 +20,7 @@ const GallerySection = () => {
   // TODO: Make this UI better
   if (isLoading) {
     return (
-      <section className="py-10 md:py-16 bg-gray-50">
+      <section className="py-10 md:py-16">
         <div className="container mx-auto text-center">
           <p>Loading gallery...</p>
         </div>
@@ -30,7 +30,7 @@ const GallerySection = () => {
 
   if (error) {
     return (
-      <section className="py-10 md:py-16 bg-gray-50">
+      <section className="py-10 md:py-16">
         <div className="container mx-auto text-center">
           <p>Failed to load gallery.</p>
         </div>
@@ -39,7 +39,7 @@ const GallerySection = () => {
   }
 
   return (
-    <section className="py-10 md:py-16 bg-gray-50">
+    <section className="py-10 md:py-16">
       <div className="container mx-auto">
         <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-[#001D0F] abhaya-libre">
           Captured Blessings
