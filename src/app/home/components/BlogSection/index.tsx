@@ -51,17 +51,17 @@ const BlogSection: FC = () => {
   }
 
   return (
-    <section className="py-16">
+    <section className="py-8 md:py-16">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 abhaya-libre">Latest Blog Posts</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">Stay updated with our latest articles and insights about Hajj and Umrah journey</p>
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-4 abhaya-libre">Latest Blog Posts</h2>
+          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">Stay updated with our latest articles and insights about Hajj and Umrah journey</p>
         </div>
 
         {/* Featured Blog Post */}
         {featuredBlog && (
-          <div className="flex flex-col md:flex-row gap-8 mb-12">
-            <div className="w-full md:w-1/2 h-[400px] relative rounded-xl overflow-hidden">
+          <div className="flex flex-col md:flex-row gap-4 md:gap-8 mb-8 md:mb-12">
+            <div className="w-full md:w-1/2 h-[250px] md:h-[400px] relative rounded-xl overflow-hidden">
               {featuredBlog.coverImage?.file?.url ? (
                 <Image
                   src={featuredBlog.coverImage.file.url}
@@ -71,21 +71,21 @@ const BlogSection: FC = () => {
                 />
               ) : (
                 <div className="w-full h-full bg-[#F5F5F5] flex items-center justify-center">
-                  <div className="w-24 h-24 border-4 border-gray-300 rounded-full flex items-center justify-center">
-                    <div className="w-16 h-16 bg-gray-300 rounded-full"></div>
+                  <div className="w-16 md:w-24 h-16 md:h-24 border-4 border-gray-300 rounded-full flex items-center justify-center">
+                    <div className="w-10 md:w-16 h-10 md:h-16 bg-gray-300 rounded-full"></div>
                   </div>
                 </div>
               )}
             </div>
 
-            <div className="w-full md:w-1/2 flex flex-col justify-center">
-              <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 abhaya-libre">
+            <div className="w-full md:w-1/2 flex flex-col justify-center px-4 md:px-0">
+              <h2 className="text-2xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-4 abhaya-libre">
                 {featuredBlog.title}
               </h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6">
                 {extractText(featuredBlog)}
               </p>
-              <button className="bg-[#FFC100] text-[#232323] px-8 py-3 rounded-2xl font-medium w-fit transition-all duration-200 hover:bg-[#FFD54F] hover:scale-105 hover:shadow-lg">
+              <button className="bg-[#FFC100] text-[#232323] px-6 md:px-8 py-2 md:py-3 rounded-2xl font-medium w-fit transition-all duration-200 hover:bg-[#FFD54F] hover:scale-105 hover:shadow-lg">
                 Read more
               </button>
             </div>
@@ -94,10 +94,10 @@ const BlogSection: FC = () => {
 
         {/* Blog Post Previews */}
         <div className="relative">
-          <div className="flex overflow-x-auto gap-6 pb-6 scrollbar-hide">
+          <div className="flex overflow-x-auto gap-4 md:gap-6 pb-4 md:pb-6 scrollbar-hide">
             {blogs.slice(1).map((blog) => (
-              <div key={blog.id} className="flex-none w-72">
-                <div className="h-48 bg-[#F5F5F5] rounded-xl mb-4 relative overflow-hidden">
+              <div key={blog.id} className="flex-none w-64 md:w-72">
+                <div className="h-40 md:h-48 bg-[#F5F5F5] rounded-xl mb-3 md:mb-4 relative overflow-hidden">
                   {blog.coverImage?.file?.url ? (
                     <Image
                       src={blog.coverImage.file.url}
@@ -107,14 +107,14 @@ const BlogSection: FC = () => {
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                      <div className="w-16 h-16 border-4 border-gray-300 rounded-full flex items-center justify-center">
-                        <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
+                      <div className="w-12 md:w-16 h-12 md:h-16 border-4 border-gray-300 rounded-full flex items-center justify-center">
+                        <div className="w-8 md:w-10 h-8 md:h-10 bg-gray-300 rounded-full"></div>
                       </div>
                     </div>
                   )}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{blog.title}</h3>
-                <p className="text-gray-600 line-clamp-2">{extractText(blog)}</p>
+                <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-1 md:mb-2">{blog.title}</h3>
+                <p className="text-sm md:text-base text-gray-600 line-clamp-2">{extractText(blog)}</p>
               </div>
             ))}
           </div>
