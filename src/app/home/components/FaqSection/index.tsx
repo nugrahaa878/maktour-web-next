@@ -43,7 +43,7 @@ const FaqSection: FC = () => {
   return (
     <section className="w-full py-8 md:py-16">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:gap-8">
+        <div className="flex flex-col md:flex-row md:gap-8 px-5">
           <div className="mb-8 md:mb-0 md:flex-1">
             <h2 className="text-2xl md:text-5xl font-bold text-gray-900 mb-3 md:mb-4 abhaya-libre">
               Frequently Asked Questions

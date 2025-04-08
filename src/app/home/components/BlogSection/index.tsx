@@ -60,7 +60,7 @@ const BlogSection: FC = () => {
 
         {/* Featured Blog Post */}
         {featuredBlog && (
-          <div className="flex flex-col md:flex-row gap-4 md:gap-8 mb-8 md:mb-12">
+          <div className="flex flex-col md:flex-row gap-4 md:gap-8 mb-8 md:mb-12 px-4 md:px-0">
             <div className="w-full md:w-1/2 h-[250px] md:h-[400px] relative rounded-xl overflow-hidden">
               {featuredBlog.coverImage?.file?.url ? (
                 <Image
