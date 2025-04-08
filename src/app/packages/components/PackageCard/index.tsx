@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Image from 'next/image';
-import BookingButton from '@/app/home/components/PackageHighlight/BookingButton';
 import Chip from '@/components/Chip';
+import SeeDetailButton from '../SeeDetailsButton';
 
 interface PackageFeature {
   icon: string;
@@ -84,7 +84,7 @@ const PackageCard: FC = () => {
                 <p className="text-white/90 mb-4">{pkg.description}</p>
                 <div className="flex items-center justify-between">
                   <span className="text-md text-white">{pkg.price}</span>
-                  <BookingButton />
+                  <SeeDetailButton />
                 </div>
               </div>
             </div>
