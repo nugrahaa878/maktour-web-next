@@ -1,6 +1,7 @@
 'use client'
 
 import { useGetFaq } from "@/hooks/useGetFaq";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const FaqContent = ({ faqId }: Props) => {
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
   const { getFaqFilteredById, isLoading, error } = useGetFaq();
@@ -32,6 +34,8 @@ const FaqContent = ({ faqId }: Props) => {
       <div className="flex flex-col items-center py-10">
         <p className="text-2xl font-semibold mb-5">FAQ Not Found</p>
         <p className="text-gray-600">The requested FAQ category could not be found or has no questions.</p>
+
+        <button className="border rounded-lg mt-4 px-4 py-2 hover:bg-[#FFC100] hover:text-white hover:border-none cursor-pointer" onClick={() => router.back()}>Back to Category</button>
       </div>
     );
   }
