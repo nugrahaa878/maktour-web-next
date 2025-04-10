@@ -1,19 +1,51 @@
 'use client'
 
 import { useGetFaq } from "@/hooks/useGetFaq";
+import { useState } from "react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 interface Props {
   faqId: number;
 }
 
 const FaqContent = ({ faqId }: Props) => {
-  const { getFaqFilteredById } = useGetFaq();
+  const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
-  const faq = getFaqFilteredById(faqId);
+  const { getFaqFilteredById } = useGetFaq();
+  const faqs = getFaqFilteredById(faqId);
+
+  const toggleFaq = (index: number) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
 
   return (
-    <div>
-      {faq.map((faq) => faq.question)}
+    <div className="flex flex-col items-center py-10">
+      <p className="text-2xl font-semibold mb-5">{faqs[0]?.faqCategory?.name}</p>
+      <div className="flex flex-col m-auto w-2xl">
+        {faqs.map((faq, index) => (
+          <div key={index} className={`mb-3 md:mb-4 rounded-xl md:rounded-2xl border-b px-3 md:px-4 border-gray-200 pb-3 md:pb-4 ${activeIndex === index ? 'bg-gradient-to-r from-white to-[#FFF0BF]' : ''}`}>
+            <button
+              onClick={() => toggleFaq(index)}
+              className="w-full flex items-center justify-between text-left py-3 md:py-4 focus:outline-none"
+              aria-expanded={activeIndex === index}
+              aria-controls={`faq-answer-${index}`}
+            >
+              <h3 className="text-base md:text-xl font-semibold text-gray-900 pr-2">{faq.question}</h3>
+              {activeIndex === index ? (
+                <FaChevronUp className="flex-shrink-0 text-gray-500" />
+              ) : (
+                <FaChevronDown className="flex-shrink-0 text-gray-500" />
+              )}
+            </button>
+            <div
+              id={`faq-answer-${index}`}
+              className={`transition-all duration-300 overflow-hidden ${activeIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
+            >
+              <p className="text-sm md:text-base text-gray-600 pb-2 md:pb-4">{faq.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
