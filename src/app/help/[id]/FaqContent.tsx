@@ -11,12 +11,30 @@ interface Props {
 const FaqContent = ({ faqId }: Props) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
-  const { getFaqFilteredById } = useGetFaq();
+  const { getFaqFilteredById, isLoading, error } = useGetFaq();
   const faqs = getFaqFilteredById(faqId);
 
   const toggleFaq = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col items-center py-10">
+        <p className="text-xl">Loading FAQ content...</p>
+      </div>
+    );
+  }
+
+  if (!faqs.length) {
+    return (
+      <div className="flex flex-col items-center py-10">
+        <p className="text-2xl font-semibold mb-5">FAQ Not Found</p>
+        <p className="text-gray-600">The requested FAQ category could not be found or has no questions.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center py-10">
