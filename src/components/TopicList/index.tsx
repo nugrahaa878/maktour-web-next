@@ -35,6 +35,7 @@ const TopicList = () => {
             key={index}
             title={topic.name}
             description={topic.description}
+            id={topic.id}
           />
         ))}
       </div>

@@ -1,6 +1,6 @@
 import axios from "@/lib/axios"
 import { useEffect, useState } from "react"
-import { FaqResponse } from "@/types/faq"
+import { FaqItem, FaqResponse } from "@/types/faq"
 
 export const useGetFaq = () => {
   const [data, setData] = useState<FaqResponse | null>(null);
@@ -23,5 +23,12 @@ export const useGetFaq = () => {
     fetchData();
   }, [])
 
-  return { data, isLoading, error }
+
+  const getFaqFilteredById = (id: number): FaqItem[] => {
+    if (!data) return [];
+
+    return data.data.filter((faq) => faq.faqCategory?.id === id);
+  }
+
+  return { data, isLoading, error, getFaqFilteredById }
 }
