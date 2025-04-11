@@ -6,8 +6,9 @@ import Chip from '@/components/Chip';
 import SeeDetailButton from '../SeeDetailsButton';
 import { useGetPackage } from '@/hooks/useGetPackage';
 import bgImage from '../../../../../public/assets/images/mekah-1.jpg';
-import { formatRupiah } from '@/lib/currencyFormatter';
+import { formatDollar, formatRupiah } from '@/lib/currencyFormatter';
 import { useRouter } from 'next/navigation';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface Package {
   type: string;
@@ -18,6 +19,7 @@ interface Package {
 }
 
 const PackageCard: FC = () => {
+  const { language } = useLanguage();
   const { data, isLoading } = useGetPackage();
   const packageList = data?.data ?? [];
   const router = useRouter();
@@ -65,7 +67,7 @@ const PackageCard: FC = () => {
                 <Chip label={pkg.classification} className='w-fit mb-2 -ml-1' variant='primary' />
                 <h3 className="text-xl font-bold text-white mb-2">{pkg.name}</h3>
                 <div className="flex items-center justify-between">
-                  <span className="text-md text-white">{formatRupiah(pkg.priceInIdr)} / person</span>
+                  <span className="text-md text-white">{language === 'en' ? formatDollar(pkg.priceInUsd) : formatRupiah(pkg.priceInIdr)} / person</span>
                   <SeeDetailButton />
                 </div>
               </div>

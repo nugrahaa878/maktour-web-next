@@ -1,13 +1,16 @@
 'use client'
 
 import Chip from "@/components/Chip"
+import { useLanguage } from "@/context/LanguageContext";
 import { useGetPackageDetail } from "@/hooks/usePackageDetail";
+import { formatDollar, formatRupiah } from "@/lib/currencyFormatter";
 
 interface Props {
   documentId: string;
 }
 
 const DetailPackage = ({ documentId }: Props) => {
+  const { language } = useLanguage();
   const { data, isLoading, error } = useGetPackageDetail(documentId);
 
   const packageData = data?.data;
@@ -42,7 +45,7 @@ const DetailPackage = ({ documentId }: Props) => {
     <h1 className="text-5xl font-bold mb-4">{packageData.name}</h1>
 
     <div className="flex gap-3 mb-10">
-      <Chip label={`USD ${packageData.priceInUsd}`} />
+      <Chip label={`${language === 'en' ? formatDollar(packageData.priceInUsd) : formatRupiah(packageData.priceInIdr)}`} />
       <Chip label={`${packageData.durationInDay} Days`} />
     </div>
 

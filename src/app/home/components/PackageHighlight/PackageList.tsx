@@ -6,6 +6,7 @@ import Image from "next/image";
 import bgCard from '../../../../../public/assets/images/mekah-3.jpg';
 import Chip from "@/components/Chip";
 import BookingButton from "./BookingButton";
+import { formatDollar, formatRupiah } from "@/lib/currencyFormatter";
 
 const PackageList = () => {
   const { language } = useLanguage();
@@ -39,7 +40,7 @@ const PackageList = () => {
           <div className="space-y-2 mb-6">
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-md text-white">{pkg.priceInIdr}</span>
+            <span className="text-md text-white">{language === 'en' ? formatDollar(pkg.priceInUsd) : formatRupiah(pkg.priceInIdr)}</span>
             <BookingButton />
           </div>
         </div>
