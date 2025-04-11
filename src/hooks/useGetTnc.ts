@@ -11,7 +11,7 @@ export const useGetTnc = () => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get<TncResponse>('/tncs');
+        const response = await axios.get<TncResponse>('/tnc');
         setData(response.data);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('An error occurred'));

@@ -1,5 +1,7 @@
 export interface TextNode {
   bold?: boolean;
+  italic?: boolean;
+  underline?: boolean;
   text: string;
   type: 'text';
 }
@@ -7,19 +9,24 @@ export interface TextNode {
 export interface ContentNode {
   type: 'heading' | 'paragraph' | 'list';
   level?: number;
-  format?: 'unordered';
+  format?: 'ordered' | 'unordered';
   children: (TextNode | { type: 'list-item', children: TextNode[] })[];
+}
+
+export interface TncContent {
+  id: number;
+  header: string;
+  content: ContentNode[];
 }
 
 export interface TncItem {
   id: number;
   documentId: string;
-  title: string;
-  content: ContentNode[];
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
   locale: string;
+  tnc: TncContent[];
 }
 
 export interface TncResponse {

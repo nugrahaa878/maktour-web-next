@@ -1,8 +1,9 @@
 'use client';
 
-import { FC, JSX } from 'react';
+import { FC } from 'react';
 import { useGetTnc } from '@/hooks/useGetTnc';
 import { ContentNode, TextNode } from '@/types/tnc';
+import { useLanguage } from '@/context/LanguageContext';
 
 type ListItemNode = {
   type: 'list-item';
@@ -13,6 +14,7 @@ type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 type HeadingTag = `h${HeadingLevel}`;
 
 const TncContent: FC = () => {
+  const { language } = useLanguage();
   const { data, isLoading, error } = useGetTnc();
 
   if (isLoading) {
@@ -35,9 +37,10 @@ const TncContent: FC = () => {
     );
   }
 
-  const tnc = data?.data[1];
+  const tncItem = data?.data.filter((tnc) => tnc.locale === language)[0];
+  const tncContent = tncItem?.tnc[0];
 
-  if (!tnc) {
+  if (!tncContent) {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
@@ -49,7 +52,10 @@ const TncContent: FC = () => {
 
   const renderTextNode = (node: TextNode) => {
     const text = node.text;
-    return node.bold ? <strong>{text}</strong> : text;
+    if (node.bold) return <strong>{text}</strong>;
+    if (node.italic) return <em>{text}</em>;
+    if (node.underline) return <u>{text}</u>;
+    return text;
   };
 
   const renderContentNode = (node: ContentNode) => {
@@ -82,8 +88,10 @@ const TncContent: FC = () => {
         );
 
       case 'list':
+        const ListComponent = node.format === 'ordered' ? 'ol' : 'ul';
+        const listStyle = node.format === 'ordered' ? 'list-decimal' : 'list-disc';
         return (
-          <ul className="list-disc pl-6 mb-4 space-y-2">
+          <ListComponent className={`${listStyle} pl-6 mb-4 space-y-2`}>
             {node.children.map((item, index) => {
               if ('type' in item && item.type === 'list-item') {
                 return (
@@ -96,7 +104,7 @@ const TncContent: FC = () => {
               }
               return null;
             })}
-          </ul>
+          </ListComponent>
         );
 
       default:
@@ -108,10 +116,10 @@ const TncContent: FC = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto rounded-lg p-8">
         <h1 className="text-4xl font-bold text-center mb-8 text-[#001D0F] abhaya-libre">
-          {tnc.title}
+          {tncContent.header}
         </h1>
         <div className="prose max-w-none">
-          {tnc.content.map((node, index) => (
+          {tncContent.content.map((node, index) => (
             <div key={index}>{renderContentNode(node)}</div>
           ))}
         </div>

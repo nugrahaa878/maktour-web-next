@@ -14,7 +14,7 @@ const menuItems = [
   { name: 'Hajj', path: '/hajj' },
   { name: 'Packages', path: '/packages' },
   { name: 'Help', path: '/help' },
-  { name: 'FAQ', path: '/faq' },
+  { name: 'TnC', path: '/tnc' },
 ];
 
 interface NavbarProps {
