@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import maktourLogo from '../../../public/assets/images/maktour-logo.png';
 import whatsappIcon from '../../../public/assets/icons/whatsapp.png';
-
+import LanguageSwitcher from '../LanguageSwitcher';
 
 type MobileMenuProps = {
   menuItems: Array<{ name: string; path: string }>;
@@ -114,6 +114,8 @@ export default function MobileMenuButton({ menuItems }: MobileMenuProps) {
                 <span className='font-bold'>Contact Us</span>
               </a>
             </button>
+
+            <LanguageSwitcher isScrolled />
           </div>
         </div>
       )}
