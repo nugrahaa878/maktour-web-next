@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Abhaya_Libre } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from '../context/LanguageContext';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,7 +39,9 @@ export default function RootLayout({
           style={{ backgroundImage: 'url(/assets/images/bg-main.jpg)' }}
         ></div>
         <div className="relative z-10 min-h-screen">
-          {children}
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
         </div>
       </body>
     </html>

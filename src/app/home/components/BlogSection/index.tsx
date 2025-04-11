@@ -4,12 +4,16 @@ import { useGetBlog } from '@/hooks/useGetBlog';
 import { BlogItem } from '@/types/blog';
 import { FC } from 'react';
 import Image from 'next/image';
+import { useLanguage } from '@/context/LanguageContext';
 
 const BlogSection: FC = () => {
+  const { language } = useLanguage();
   const { data, isLoading, error } = useGetBlog();
 
-  const featuredBlog = data?.data[0];
-  const blogs = data?.data || [];
+  const allBlog = data?.data.filter((blog) => blog.locale === language);
+
+  const featuredBlog = allBlog?.[0];
+  const blogs = (data?.data || []).slice(1);
 
   const extractText = (blog: BlogItem): string => {
     if (!blog.content || !blog.content.length) return '';

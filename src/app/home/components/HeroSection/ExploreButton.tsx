@@ -1,5 +1,7 @@
 'use client';
 
+import { useLanguage } from "@/context/LanguageContext";
+
 export const ExploreButton = () => {
   const handleClick = () => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);

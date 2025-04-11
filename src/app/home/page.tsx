@@ -1,7 +1,6 @@
 import GallerySection from "./components/GallerySection";
 import HeroSection from "./components/HeroSection";
 import PackageHighlights from "./components/PackageHighlight";
-import VisaRequirements from "./components/VisaRequirements";
 import FaqSection from "./components/FaqSection";
 import PlanWithUs from "@/components/PlanWithUs";
 import Navbar from "@/components/navbar";

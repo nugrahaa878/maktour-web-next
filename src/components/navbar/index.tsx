@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link'
 import Image from 'next/image';
 import MobileMenuButton from './MobileMenuButton';
+import LanguageSwitcher from '../LanguageSwitcher';
 import maktourLogo from '../../../public/assets/images/maktour-logo.png';
 import whatsappIcon from '../../../public/assets/icons/whatsapp.png';
 
@@ -66,9 +67,7 @@ const Navbar = ({ isWhiteBackground = false }: NavbarProps) => {
 
             {/* Right side buttons */}
             <div className="hidden md:flex items-center space-x-4">
-              <button className={`hover:text-amber-500 px-3 py-2 text-sm font-medium transition-colors duration-200 ${isScrolled || isWhiteBackground ? 'text-gray-800' : 'text-[#FFF9F9]'}`}>
-                EN
-              </button>
+              <LanguageSwitcher />
               <a
                 href="https://wa.me/+6281268529556"
                 target="_blank"
