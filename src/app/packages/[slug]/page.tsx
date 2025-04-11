@@ -5,8 +5,6 @@ import { ExploreButton } from "../components/ExploreButton";
 import Footer from "@/components/footer";
 
 const PackageDetails = () => {
-
-
   return (
     <main className="min-h-screen">
       <Navbar isWhiteBackground />

@@ -1,11 +1,13 @@
 import Navbar from "@/components/navbar";
 import FaqContent from "./FaqContent";
 
-export default async function HelpPageCategory({ params }: { params: { id: string } }) {
+export default async function HelpPageCategory({ params, }: { params: Promise<{ id: string }> }) {
+  const faqId = (await params).id;
+
   return (
     <main className="min-h-screen">
       <Navbar isWhiteBackground />
-      <FaqContent faqId={Number(params.id)} />
+      <FaqContent faqId={Number(faqId)} />
     </main>
   );
 }
