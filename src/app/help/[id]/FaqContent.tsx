@@ -1,5 +1,6 @@
 'use client'
 
+import { useLanguage } from "@/context/LanguageContext";
 import { useGetFaq } from "@/hooks/useGetFaq";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const FaqContent = ({ faqId }: Props) => {
+  const { language } = useLanguage();
   const router = useRouter();
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
@@ -20,6 +22,7 @@ const FaqContent = ({ faqId }: Props) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
+  const filterLanguageFaq = faqs?.filter((faq) => faq.locale === language) ?? [];
 
   if (isLoading) {
     return (
@@ -44,7 +47,7 @@ const FaqContent = ({ faqId }: Props) => {
     <div className="flex flex-col items-center py-10">
       <p className="text-2xl font-semibold mb-5">{faqs[0]?.faqCategory?.name}</p>
       <div className="flex flex-col m-auto w-2xl">
-        {faqs.map((faq, index) => (
+        {filterLanguageFaq.map((faq, index) => (
           <div key={index} className={`mb-3 md:mb-4 rounded-xl md:rounded-2xl border-b px-3 md:px-4 border-gray-200 pb-3 md:pb-4 ${activeIndex === index ? 'bg-gradient-to-r from-white to-[#FFF0BF]' : ''}`}>
             <button
               onClick={() => toggleFaq(index)}
