@@ -45,8 +45,8 @@ const FaqContent = ({ faqId }: Props) => {
 
   return (
     <div className="flex flex-col items-center py-10">
-      <p className="text-2xl font-semibold mb-5">{faqs[0]?.faqCategory?.name}</p>
-      <div className="flex flex-col m-auto w-2xl">
+      <p className="text-2xl font-semibold md:mb-5 mb-10">{faqs[0]?.faqCategory?.name}</p>
+      <div className="flex flex-col m-auto w-full md:w-2xl px-10 md:px-0">
         {filterLanguageFaq.map((faq, index) => (
           <div key={index} className={`mb-3 md:mb-4 rounded-xl md:rounded-2xl border-b px-3 md:px-4 border-gray-200 pb-3 md:pb-4 ${activeIndex === index ? 'bg-gradient-to-r from-white to-[#FFF0BF]' : ''}`}>
             <button

@@ -103,6 +103,7 @@ export default function MobileMenuButton({ menuItems }: MobileMenuProps) {
                 </Link>
               ))}
             </div>
+            <LanguageSwitcher isScrolled />
             <button>
               <a
                 href="https://wa.me/+6281234567890"
@@ -115,7 +116,6 @@ export default function MobileMenuButton({ menuItems }: MobileMenuProps) {
               </a>
             </button>
 
-            <LanguageSwitcher isScrolled />
           </div>
         </div>
       )}

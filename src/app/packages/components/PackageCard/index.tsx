@@ -44,7 +44,8 @@ const PackageCard: FC = () => {
   }
 
   return (
-    <section className="py-16">
+    <section className="py-16 flex flex-col items-center">
+      <h1 className="text-4xl md:text-5xl font-bold abhaya-libre text-center md:text-left mb-10">Our Packages</h1>
       <div className="container mx-auto px-4">
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
