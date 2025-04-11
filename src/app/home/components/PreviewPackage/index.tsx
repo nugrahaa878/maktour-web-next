@@ -5,7 +5,7 @@ import hajj from '../../../../../public/assets/icons/hajj.png'
 
 const PreviewPackages = () => {
   return (
-    <div className="flex md:flex-row justify-around w-full text-white mt-28 gap-10 md:gap-10 overflow-x-auto px-4">
+    <div className="flex flex-wrap md:flex-row md:flex-nowrap justify-around w-full text-white mt-28 gap-10 md:gap-10 px-4">
       <div className="flex flex-col items-center">
         <div className="w-20 h-20 md:h-24 md:w-24 relative mb-4">
           <Image src={nabawi} alt="nabawi" fill className="object-contain" />
