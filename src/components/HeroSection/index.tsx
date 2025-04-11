@@ -1,3 +1,5 @@
+'use client'
+
 import { FC } from 'react';
 import Image from 'next/image';
 import { StaticImageData } from 'next/image';
@@ -11,6 +13,17 @@ interface HeroSectionProps {
 }
 
 const HeroSection: FC<HeroSectionProps> = ({ title, description, buttonText, backgroundImage = heroImage }) => {
+  const handleClick = () => {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const url = 'https://wa.me/6281268529556';
+
+    if (isMobile) {
+      window.location.href = url;
+    } else {
+      window.open(url, '_blank');
+    }
+  };
+
   return (
     <section className="flex items-center relative py-30">
       <div className="absolute inset-0">
@@ -27,7 +40,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, description, buttonText, bac
             {description}
           </p>
 
-          <button className="bg-yellow-500 hover:bg-yellow-600 text-black py-3 px-8 rounded-full transition-all">
+          <button className="bg-yellow-500 hover:bg-yellow-600 text-black py-3 px-8 rounded-full transition-all" onClick={handleClick}>
             {buttonText}
           </button>
         </div>
