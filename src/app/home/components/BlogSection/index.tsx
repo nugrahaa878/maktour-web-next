@@ -13,7 +13,7 @@ const BlogSection: FC = () => {
   const allBlog = data?.data.filter((blog) => blog.locale === language);
 
   const featuredBlog = allBlog?.[0];
-  const blogs = (data?.data || []).slice(1);
+  const blogs = (allBlog || []).slice(1);
 
   const extractText = (blog: BlogItem): string => {
     if (!blog.content || !blog.content.length) return '';

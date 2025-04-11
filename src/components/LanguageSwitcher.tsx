@@ -1,7 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
-const LanguageSwitcher: React.FC = () => {
+interface Props {
+  isScrolled: boolean;
+}
+
+const LanguageSwitcher = ({ isScrolled }: Props) => {
   const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -32,7 +36,7 @@ const LanguageSwitcher: React.FC = () => {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
-        className="flex items-center space-x-1 hover:text-amber-500 px-3 py-2 text-sm font-medium transition-colors duration-200 text-white cursor-pointer"
+        className={`flex items-center space-x-1 hover:text-amber-500 px-3 py-2 text-sm font-medium transition-colors duration-200 cursor-pointer ${isScrolled ? 'text-black' : 'text-white'}`}
       >
         <span>{language.toUpperCase()}</span>
         <svg
