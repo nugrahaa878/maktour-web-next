@@ -4,7 +4,11 @@ import { useGetFaqCategory } from '@/hooks/useGetFaqCategory';
 import TopicCard from '../TopicCard';
 import { useLanguage } from '@/context/LanguageContext';
 
-const TopicList = () => {
+interface TopicListProps {
+  searchQuery?: string;
+}
+
+const TopicList = ({ searchQuery = '' }: TopicListProps) => {
   const { language } = useLanguage();
   const { data, error, isLoading } = useGetFaqCategory();
 
@@ -28,7 +32,27 @@ const TopicList = () => {
     );
   }
 
-  const topicList = data?.data.filter((topic) => topic.locale === language) ?? [];
+  const topicList = data?.data
+    .filter((topic) => topic.locale === language)
+    .filter((topic) => {
+      if (!searchQuery) return true;
+      const query = searchQuery.toLowerCase();
+      return (
+        topic.name.toLowerCase().includes(query) ||
+        topic.description.toLowerCase().includes(query)
+      );
+    }) ?? [];
+
+
+  if (!topicList.length) {
+    return (
+      <div className="flex flex-col items-center py-10">
+        <p className="text-2xl font-semibold mb-5">Topic Not Found</p>
+        <p className="text-gray-600">The requested Topic category could not be found or has no questions.</p>
+
+      </div>
+    );
+  }
 
   return (
     <section className="py-16 px-10 md:px-8">

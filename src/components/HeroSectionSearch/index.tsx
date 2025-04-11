@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useState } from 'react';
+import { FC, useState, KeyboardEvent } from 'react';
 import Image from 'next/image';
 import { StaticImageData } from 'next/image';
 import heroImage from '../../../public/assets/images/kabah.png';
@@ -9,13 +9,34 @@ interface HeroSectionProps {
   title: string;
   description: string;
   backgroundImage?: StaticImageData | string;
+  onSearch?: (query: string) => void;
 }
 
-const HeroSectionSearch: FC<HeroSectionProps> = ({ title, description, backgroundImage = heroImage }) => {
+const HeroSectionSearch: FC<HeroSectionProps> = ({
+  title,
+  description,
+  backgroundImage = heroImage,
+  onSearch
+}) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = () => {
-    console.log('Searching for:', searchQuery);
+    if (onSearch) {
+      onSearch(searchQuery);
+    }
+  };
+
+  const handleReset = () => {
+    setSearchQuery('');
+    if (onSearch) {
+      onSearch('');
+    }
+  };
+
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
   };
 
   return (
@@ -37,17 +58,28 @@ const HeroSectionSearch: FC<HeroSectionProps> = ({ title, description, backgroun
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-xl mx-auto mb-8">
             <input
               type="text"
-              placeholder="Search for packages..."
+              placeholder="Search for topic..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyPress={handleKeyPress}
               className="w-full sm:w-96 px-6 py-3 rounded-full bg-white/90 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
             />
-            <button
-              onClick={handleSearch}
-              className="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-600 text-black py-3 px-8 rounded-full transition-all"
-            >
-              Search
-            </button>
+            <div className="flex gap-2 w-full sm:w-auto">
+              <button
+                onClick={handleSearch}
+                className="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-600 text-black py-3 px-8 rounded-full transition-all"
+              >
+                Search
+              </button>
+              {searchQuery && (
+                <button
+                  onClick={handleReset}
+                  className="w-full sm:w-auto bg-gray-500 hover:bg-gray-600 text-white py-3 px-8 rounded-full transition-all"
+                >
+                  Reset
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
