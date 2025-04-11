@@ -7,6 +7,7 @@ import SeeDetailButton from '../SeeDetailsButton';
 import { useGetPackage } from '@/hooks/useGetPackage';
 import bgImage from '../../../../../public/assets/images/mekah-1.jpg';
 import { formatRupiah } from '@/lib/currencyFormatter';
+import { useRouter } from 'next/navigation';
 
 interface Package {
   type: string;
@@ -18,7 +19,8 @@ interface Package {
 
 const PackageCard: FC = () => {
   const { data, isLoading } = useGetPackage();
-  const packageList = data?.data ?? []
+  const packageList = data?.data ?? [];
+  const router = useRouter();
 
   if (isLoading) {
     return (
@@ -37,6 +39,10 @@ const PackageCard: FC = () => {
     );
   }
 
+  const handleClick = (id: string) => {
+    router.push(`/packages/${id}`)
+  }
+
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
@@ -46,6 +52,7 @@ const PackageCard: FC = () => {
             <div
               key={index}
               className="relative h-[500px] rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2"
+              onClick={() => handleClick(pkg.documentId)}
             >
               <Image
                 src={bgImage}
