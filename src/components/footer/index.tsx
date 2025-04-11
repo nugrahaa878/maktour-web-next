@@ -44,22 +44,22 @@ const Footer: FC = () => {
             <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-300 hover:text-amber-600 transition-colors">About Us</a>
+                <a href="/about-us" className="text-gray-300 hover:text-amber-600 transition-colors">About Us</a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-amber-600 transition-colors">Umrah & Ziyarah</a>
+                <a href="/umrah" className="text-gray-300 hover:text-amber-600 transition-colors">Umrah & Ziyarah</a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-amber-600 transition-colors">Hajj</a>
+                <a href="/hajj" className="text-gray-300 hover:text-amber-600 transition-colors">Hajj</a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-amber-600 transition-colors">Packages</a>
+                <a href="/packages" className="text-gray-300 hover:text-amber-600 transition-colors">Packages</a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-amber-600 transition-colors">Plan with Us</a>
+                <a href="/help" className="text-gray-300 hover:text-amber-600 transition-colors">Help</a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-amber-600 transition-colors">Blog</a>
+                <a href="/tnc" className="text-gray-300 hover:text-amber-600 transition-colors">TnC</a>
               </li>
             </ul>
           </div>
