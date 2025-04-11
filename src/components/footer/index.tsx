@@ -64,27 +64,6 @@ const Footer: FC = () => {
             </ul>
           </div>
 
-          {/* Contact Info & Newsletter */}
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
-            <div className="space-y-4">
-              <p className="text-gray-300">+62 812 3456 7890</p>
-              <p className="text-gray-300">johndoe@gmail.com</p>
-              <div className="mt-6">
-                <h4 className="text-xl font-semibold mb-4">Subscribe our Newsletter</h4>
-                <div className="flex">
-                  <input
-                    type="email"
-                    placeholder="johndoe@gmail.com"
-                    className="flex-1 bg-[#3D3D3D] text-gray-300 px-4 py-2 rounded-l focus:outline-none"
-                  />
-                  <button className="bg-amber-600 text-white px-4 py-2 rounded-r hover:bg-amber-700 transition-colors">
-                    Subscribe
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Copyright */}
