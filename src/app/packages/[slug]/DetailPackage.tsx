@@ -4,9 +4,36 @@ import Chip from "@/components/Chip"
 import { useLanguage } from "@/context/LanguageContext";
 import { useGetPackageDetail } from "@/hooks/usePackageDetail";
 import { formatDollar, formatRupiah } from "@/lib/currencyFormatter";
+import Image from "next/image";
+import { ContentNode, DetailSection } from "@/types/package";
 
 interface Props {
   documentId: string;
+}
+
+interface TextNode {
+  text: string;
+  type: string;
+  bold?: boolean;
+  italic?: boolean;
+  underline?: boolean;
+}
+
+interface ListItemNode {
+  type: string;
+  children?: TextNode[];
+}
+
+interface ListNode {
+  type: string;
+  format?: string;
+  children?: ListItemNode[];
+}
+
+interface HeadingNode {
+  type: string;
+  level?: number;
+  children?: TextNode[];
 }
 
 const DetailPackage = ({ documentId }: Props) => {
@@ -28,44 +55,131 @@ const DetailPackage = ({ documentId }: Props) => {
   }
 
   // Helper function to render content nodes
-  const renderContentNodes = (contentNodes: any[]) => {
+  const renderContentNodes = (contentNodes: ContentNode[]) => {
     if (!contentNodes || contentNodes.length === 0) return "No content available";
 
     return contentNodes.map((node, index) => {
       if (node.type === 'paragraph' && node.children) {
-        return node.children.map((child: any, childIndex: number) => (
-          <span key={`${index}-${childIndex}`}>{child.text}</span>
-        ));
+        return (
+          <p key={index} className="mb-4">
+            {node.children.map((child: TextNode, childIndex: number) => (
+              <span
+                key={`${index}-${childIndex}`}
+                className={`
+                  ${child.bold ? 'font-bold' : ''}
+                  ${child.italic ? 'italic' : ''}
+                  ${child.underline ? 'underline' : ''}
+                `}
+              >
+                {child.text}
+              </span>
+            ))}
+          </p>
+        );
       }
+
+      if (node.type === 'list' && node.children) {
+        const listNode = node as ListNode;
+        return (
+          <ul key={index} className="list-disc pl-6 mb-4">
+            {listNode.children?.map((item: ListItemNode, itemIndex: number) => (
+              <li key={itemIndex} className="mb-2">
+                {item.children?.map((child: TextNode, childIndex: number) => (
+                  <span
+                    key={`${index}-${itemIndex}-${childIndex}`}
+                    className={`
+                      ${child.bold ? 'font-bold' : ''}
+                      ${child.italic ? 'italic' : ''}
+                      ${child.underline ? 'underline' : ''}
+                    `}
+                  >
+                    {child.text}
+                  </span>
+                ))}
+              </li>
+            ))}
+          </ul>
+        );
+      }
+
+      if (node.type === 'heading' && node.children) {
+        const headingNode = node as HeadingNode;
+        return (
+          <h5 key={index} className="text-lg font-bold mb-3">
+            {headingNode.children?.map((child: TextNode, childIndex: number) => (
+              <span
+                key={`${index}-${childIndex}`}
+                className={`
+                  ${child.bold ? 'font-bold' : ''}
+                  ${child.italic ? 'italic' : ''}
+                  ${child.underline ? 'underline' : ''}
+                `}
+              >
+                {child.text}
+              </span>
+            ))}
+          </h5>
+        );
+      }
+
       return null;
     });
   };
 
-  return <div className="px-24">
-    <h1 className="text-5xl font-bold mb-4">{packageData.name}</h1>
-
-    <div className="flex gap-3 mb-10">
-      <Chip label={`${language === 'en' ? formatDollar(packageData.priceInUsd) : formatRupiah(packageData.priceInIdr)}`} />
-      <Chip label={`${packageData.durationInDay} Days`} />
-    </div>
-
-    <div className="flex flex-col gap-10">
-      <div className="flex gap-10">
-        <div className="flex-1 border border-[#CCCCCC] rounded-2xl py-8 px-12">
-          <h3 className="text-2xl font-bold mb-3">Persyaratan</h3>
-          <p>{packageData.requirementDetail ? renderContentNodes(packageData.requirementDetail.content) : "No requirements specified"}</p>
-        </div>
-        <div className="flex-1 border border-[#CCCCCC] rounded-2xl py-8 px-12">
-          <h3 className="text-2xl font-bold mb-3">Akomodasi</h3>
-          <p>{packageData.accommodationDetail ? renderContentNodes(packageData.accommodationDetail.content) : "No accommodation details specified"}</p>
+  const renderDetailSection = (section: DetailSection) => {
+    return (
+      <div className="flex flex-col gap-6">
+        <h3 className="text-2xl font-bold">{section.header}</h3>
+        {section.media && (
+          <div className="relative w-full h-96 rounded-xl overflow-hidden">
+            <Image
+              src={section.media.file.url}
+              alt={section.media.alternativeText}
+              fill
+              className="object-cover"
+            />
+          </div>
+        )}
+        <div className="prose max-w-none">
+          {renderContentNodes(section.content)}
         </div>
       </div>
-      <div className="border border-[#CCCCCC] rounded-2xl py-8 px-12">
-        <h3 className="text-2xl font-bold mb-3">Keterangan Pembatalan</h3>
-        <p>{packageData.cancellationPolicy ? renderContentNodes(packageData.cancellationPolicy) : "No cancellation policy specified"}</p>
+    );
+  };
+
+  return (
+    <div className="px-24">
+      <h1 className="text-5xl font-bold mb-4">{packageData.name}</h1>
+
+      <div className="flex gap-3 mb-10">
+        <Chip label={`${language === 'en' ? formatDollar(packageData.priceInUsd) : formatRupiah(packageData.priceInIdr)}`} />
+        <Chip label={`${packageData.durationInDay} Days`} />
+        <Chip label={packageData.category} />
+        <Chip label={packageData.classification} />
+      </div>
+
+      <div className="flex flex-col gap-10">
+        <div className="flex gap-10">
+          <div className="flex-1 border border-[#CCCCCC] rounded-2xl py-8 px-12">
+            {renderDetailSection(packageData.requirementDetail)}
+          </div>
+          <div className="flex-1 border border-[#CCCCCC] rounded-2xl py-8 px-12">
+            {renderDetailSection(packageData.accommodationDetail)}
+          </div>
+        </div>
+
+        <div className="border border-[#CCCCCC] rounded-2xl py-8 px-12">
+          {renderDetailSection(packageData.cancellationPolicy)}
+        </div>
+
+        {packageData.additionalInfos.map((info, index) => (
+          <div key={index} className="border border-[#CCCCCC] rounded-2xl py-8 px-12">
+            {renderDetailSection(info)}
+          </div>
+        ))}
       </div>
     </div>
-  </div>
+  );
 }
 
 export default DetailPackage;
