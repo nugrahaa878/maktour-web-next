@@ -3,7 +3,7 @@
 export const ExploreButton = () => {
   const handleClick = () => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const url = 'https://wa.me/6281268529556';
+    const url = 'https://wa.me/6281262382872';
 
     if (isMobile) {
       window.location.href = url;

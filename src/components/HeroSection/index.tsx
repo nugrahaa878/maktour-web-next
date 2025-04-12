@@ -15,7 +15,7 @@ interface HeroSectionProps {
 const HeroSection: FC<HeroSectionProps> = ({ title, description, buttonText, backgroundImage = heroImage }) => {
   const handleClick = () => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const url = 'https://wa.me/6281268529556';
+    const url = 'https://wa.me/628126852123122';
 
     if (isMobile) {
       window.location.href = url;

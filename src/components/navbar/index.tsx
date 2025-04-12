@@ -15,6 +15,7 @@ const menuItems = [
   { name: 'Packages', path: '/packages' },
   { name: 'Help', path: '/help' },
   { name: 'TnC', path: '/tnc' },
+  { name: 'Privacy', path: '/privacy-policy' },
 ];
 
 interface NavbarProps {
@@ -69,7 +70,7 @@ const Navbar = ({ isWhiteBackground = false }: NavbarProps) => {
             <div className="hidden md:flex items-center space-x-4">
               <LanguageSwitcher isScrolled={isScrolled} />
               <a
-                href="https://wa.me/+6281268529556"
+                href="https://wa.me/+6281268522312312"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-colors duration-200 flex items-center space-x-2"
