@@ -1,6 +1,15 @@
+import { useLanguage } from "@/context/LanguageContext";
+import { useGetBlog } from "@/hooks/useGetBlog";
+import { useRouter } from "next/navigation";
 import { FaSearch } from "react-icons/fa"
 
 const SearchBlog = () => {
+  const router = useRouter();
+  const { language } = useLanguage();
+  const { data } = useGetBlog();
+
+  const allBlog = data?.data.filter((blog) => blog.locale === language) ?? [];
+
   return (
     <div className="w-full lg:w-3/5 mt-12 lg:mt-0" >
       {/* Search Box */}
@@ -23,23 +32,17 @@ const SearchBlog = () => {
       <div className="bg-[#D4B760] text-white p-8 rounded-lg" >
         <h3 className="text-2xl font-bold mb-6" > Categories </h3>
         < div className="space-y-4" >
-          <button
-            className={`block w-full text-left py-2 border-b border-white/30 hover:text-gray-200 ${!true ? 'font-bold' : ''}`}
-            onClick={() => console.log('')}
-          >
-            All Categories
-          </button>
-
-          {/* {
-            categories.map((category, index) => (
+          {
+            allBlog.map((blog, index) => (
               <button
                 key={index}
-                className={`block w-full text-left py-2 ${index < categories.length - 1 ? 'border-b border-white/30' : ''} hover:text-gray-200 ${selectedCategory === category ? 'font-bold' : ''}`}
-                onClick={() => setSelectedCategory(category)}
+                className={`block w-full text-left py-2 ${index < allBlog.length - 1 ? 'border-b border-white/30' : ''} hover:text-gray-200 ${blog === blog ? 'font-bold' : ''} line-clamp-2 overflow-ellipsis cursor-pointer`}
+                onClick={() => router.push(blog.documentId)}
               >
-                {category}
+                {blog.title}
               </button>
-            ))} */}
+            ))
+          }
         </div>
       </div>
     </div>
