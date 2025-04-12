@@ -68,7 +68,7 @@ const BlogContent: FC<Props> = ({ blogId, locale = "en" }) => {
 
   if (isLoading) {
     return (
-      <div className="animate-pulse">
+      <div className="animate-pulse md:w-2/3 px-10 items-center m-auto py-12">
         <div className="h-96 bg-gray-200 rounded-lg mb-8" />
         <div className="space-y-4">
           <div className="h-8 bg-gray-200 rounded w-3/4" />
