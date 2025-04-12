@@ -5,52 +5,33 @@ export interface BlogImage {
   alternativeText: string;
   file: {
     id: number;
-    documentId: string;
-    name: string;
-    alternativeText: null | string;
-    caption: null | string;
-    width: number;
-    height: number;
+    url: string;
     formats: {
       large: ImageFormat;
-      small: ImageFormat;
       medium: ImageFormat;
+      small: ImageFormat;
       thumbnail: ImageFormat;
     };
-    hash: string;
-    ext: string;
-    mime: string;
-    size: number;
-    url: string;
-    previewUrl: null | string;
-    provider: string;
-    provider_metadata: null | any;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
   };
 }
 
 export interface ImageFormat {
-  ext: string;
   url: string;
-  hash: string;
-  mime: string;
-  name: string;
-  path: null | string;
-  size: number;
   width: number;
   height: number;
-  sizeInBytes: number;
 }
 
 export interface ContentBlock {
   type: string;
   level?: number;
-  children: {
+  format?: string;
+  children: Array<{
     text: string;
     type: string;
-  }[];
+    bold?: boolean;
+    italic?: boolean;
+    underline?: boolean;
+  }>;
 }
 
 export interface BlogItem {
@@ -75,4 +56,19 @@ export interface BlogResponse {
       total: number;
     };
   };
+}
+
+export interface BlogDetailResponse {
+  data: {
+    id: number;
+    documentId: string;
+    title: string;
+    content: ContentBlock[];
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    locale: string;
+    coverImage: BlogImage;
+  };
+  meta: Record<string, any>;
 } 
