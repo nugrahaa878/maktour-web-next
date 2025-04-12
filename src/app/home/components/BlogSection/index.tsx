@@ -5,9 +5,11 @@ import { BlogItem } from '@/types/blog';
 import { FC } from 'react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
+import { useRouter } from 'next/navigation';
 
 const BlogSection: FC = () => {
   const { language } = useLanguage();
+  const router = useRouter();
   const { data, isLoading, error } = useGetBlog();
 
   const allBlog = data?.data.filter((blog) => blog.locale === language);
@@ -93,7 +95,7 @@ const BlogSection: FC = () => {
               <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6">
                 {extractText(featuredBlog)}
               </p>
-              <button className="bg-[#FFC100] text-[#232323] px-6 md:px-8 py-2 md:py-3 rounded-2xl font-medium w-fit transition-all duration-200 hover:bg-[#FFD54F] hover:scale-105 hover:shadow-lg">
+              <button className="bg-[#FFC100] text-[#232323] px-6 md:px-8 py-2 md:py-3 rounded-2xl font-medium w-fit transition-all duration-200 hover:bg-[#FFD54F] hover:scale-105 hover:shadow-lg" onClick={() => router.push(`/blog/${featuredBlog.documentId}`)}>
                 Read more
               </button>
             </div>
@@ -104,7 +106,7 @@ const BlogSection: FC = () => {
         <div className="relative">
           <div className="flex overflow-x-auto gap-4 md:gap-6 pb-4 md:pb-6 scrollbar-hide">
             {blogs.slice(1).map((blog) => (
-              <div key={blog.id} className="flex-none w-64 md:w-72">
+              <div key={blog.id} className="flex-none w-64 md:w-72 cursor-pointer" onClick={() => router.push(`/blog/${blog.documentId}`)}>
                 <div className="h-40 md:h-48 bg-[#F5F5F5] rounded-xl mb-3 md:mb-4 relative overflow-hidden">
                   {blog.coverImage?.file?.url ? (
                     <Image
