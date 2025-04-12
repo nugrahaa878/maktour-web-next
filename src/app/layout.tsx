@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Abhaya_Libre } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from '../context/LanguageContext';
+import Navbar from '@/components/navbar';
+import WhatsAppFAB from '@/components/WhatsAppFAB';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,8 +22,8 @@ const abhayaLibre = Abhaya_Libre({
 });
 
 export const metadata: Metadata = {
-  title: "Maktour Hajj",
-  description: "Experience a transformative Hajj journey with Maktour - Your trusted partner for spiritual travel and pilgrimage services. We provide comprehensive Hajj packages, expert guidance, and seamless travel arrangements to make your sacred journey memorable.",
+  title: "Maktour Hajj & Umrah",
+  description: "Your trusted partner for Hajj and Umrah services",
 };
 
 export default function RootLayout({
@@ -40,7 +42,9 @@ export default function RootLayout({
         ></div>
         <div className="relative z-10 min-h-screen">
           <LanguageProvider>
+            <Navbar />
             {children}
+            <WhatsAppFAB />
           </LanguageProvider>
         </div>
       </body>
