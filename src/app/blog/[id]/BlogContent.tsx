@@ -3,6 +3,7 @@
 import { useGetBlogDetail } from "@/hooks/useBlogDetail";
 import Image from "next/image";
 import { FC, createElement, ReactNode } from "react";
+import SearchBlog from "./SearchBlog";
 
 interface Props {
   blogId: string;
@@ -169,27 +170,30 @@ const BlogContent: FC<Props> = ({ blogId, locale = "en" }) => {
   });
 
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
-      <div className="relative h-[500px] rounded-xl overflow-hidden mb-8">
-        <Image
-          src={coverImage.file.formats.large.url}
-          alt={coverImage.alternativeText || title}
-          fill
-          className="object-cover"
-          priority
-        />
-      </div>
+    <article className="mx-auto px-28 py-8 flex gap-10">
+      <div>
+        <div className="relative h-[500px] rounded-xl overflow-hidden mb-8">
+          <Image
+            src={coverImage.file.formats.large.url}
+            alt={coverImage.alternativeText || title}
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
 
-      <header className="mb-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
-        <time className="text-gray-600">
-          {formattedDate}
-        </time>
-      </header>
+        <header className="mb-8">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
+          <time className="text-gray-600">
+            {formattedDate}
+          </time>
+        </header>
 
-      <div className="prose prose-lg max-w-none">
-        {renderContentNodes(content)}
+        <div className="prose prose-lg max-w-none">
+          {renderContentNodes(content)}
+        </div>
       </div>
+      <SearchBlog />
     </article>
   );
 };
