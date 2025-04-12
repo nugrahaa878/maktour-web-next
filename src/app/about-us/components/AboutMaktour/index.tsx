@@ -2,7 +2,7 @@ import Image from "next/image";
 import maktourLogo from "../../../../../public/assets/images/maktour-logo.png";
 
 const AboutMaktour = () => {
-  return <div className="pt-10 md:pt-20 px-4 sm:px-8 md:px-16 lg:px-36 bg-white text-black">
+  return <div className="pt-10 md:pt-20 px-4 sm:px-8 md:px-16 lg:px-36 text-black">
     <h1 className="text-3xl md:text-5xl font-bold abhaya-libre text-center md:text-left mb-10">Maktour Travel</h1>
 
     <div className="flex flex-col md:flex-row justify-center mt-8 md:mt-0">
