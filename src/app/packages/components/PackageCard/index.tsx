@@ -21,7 +21,7 @@ interface Package {
 const PackageCard: FC = () => {
   const { language } = useLanguage();
   const { data, isLoading } = useGetPackage();
-  const packageList = data?.data ?? [];
+  const packageList = data?.data.filter((pkg) => pkg.locale === language) ?? [];
   const router = useRouter();
 
   if (isLoading) {
@@ -36,7 +36,7 @@ const PackageCard: FC = () => {
     return (
       <div className="flex flex-col items-center py-10">
         <p className="text-2xl font-semibold mb-5">Package Not Found</p>
-        <p className="text-gray-600">The requested FAQ category could not be found or has no questions.</p>
+        <p className="text-gray-600">There are no Package right now</p>
       </div>
     );
   }
