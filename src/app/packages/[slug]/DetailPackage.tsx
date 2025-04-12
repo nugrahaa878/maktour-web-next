@@ -45,7 +45,7 @@ const DetailPackage = ({ documentId }: Props) => {
 
   if (isLoading) {
     return (
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-8 md:py-16">
         <div className="flex items-center justify-center min-h-[50vh]">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
         </div>
@@ -54,11 +54,11 @@ const DetailPackage = ({ documentId }: Props) => {
   }
 
   if (error) {
-    return <div className="px-24 py-10 text-center text-red-500">Error: {error.message}</div>;
+    return <div className="px-4 md:px-24 py-6 md:py-10 text-center text-red-500">Error: {error.message}</div>;
   }
 
   if (!packageData) {
-    return <div className="px-24 py-10 text-center">Package not found</div>;
+    return <div className="px-4 md:px-24 py-6 md:py-10 text-center">Package not found</div>;
   }
 
   // Helper function to render content nodes
@@ -135,10 +135,10 @@ const DetailPackage = ({ documentId }: Props) => {
 
   const renderDetailSection = (section: DetailSection) => {
     return (
-      <div className="flex flex-col gap-6">
-        <h3 className="text-2xl font-bold">{section.header}</h3>
+      <div className="flex flex-col gap-4 md:gap-6">
+        <h3 className="text-xl md:text-2xl font-bold">{section.header}</h3>
         {section.media && (
-          <div className="relative w-full h-96 rounded-xl overflow-hidden">
+          <div className="relative w-full h-64 md:h-96 rounded-xl overflow-hidden">
             <Image
               src={section.media.file.url}
               alt={section.media.alternativeText}
@@ -155,32 +155,32 @@ const DetailPackage = ({ documentId }: Props) => {
   };
 
   return (
-    <div className="px-24">
-      <h1 className="text-5xl font-bold mb-4">{packageData.name}</h1>
+    <div className="px-4 sm:px-6 md:px-12 lg:px-24">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">{packageData.name}</h1>
 
-      <div className="flex gap-3 mb-10">
+      <div className="flex flex-wrap gap-2 md:gap-3 mb-6 md:mb-10">
         <Chip label={`${language === 'en' ? formatDollar(packageData.priceInUsd) : formatRupiah(packageData.priceInIdr)}`} />
         <Chip label={`${packageData.durationInDay} Days`} />
         <Chip label={packageData.category} />
         <Chip label={packageData.classification} />
       </div>
 
-      <div className="flex flex-col gap-10">
-        <div className="flex gap-10">
-          <div className="flex-1 border border-[#CCCCCC] rounded-2xl py-8 px-12">
+      <div className="flex flex-col gap-6 md:gap-10">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-10">
+          <div className="w-full lg:flex-1 border border-[#CCCCCC] rounded-2xl py-6 px-6 md:py-8 md:px-12">
             {renderDetailSection(packageData.requirementDetail)}
           </div>
-          <div className="flex-1 border border-[#CCCCCC] rounded-2xl py-8 px-12">
+          <div className="w-full lg:flex-1 border border-[#CCCCCC] rounded-2xl py-6 px-6 md:py-8 md:px-12">
             {renderDetailSection(packageData.accommodationDetail)}
           </div>
         </div>
 
-        <div className="border border-[#CCCCCC] rounded-2xl py-8 px-12">
+        <div className="border border-[#CCCCCC] rounded-2xl py-6 px-6 md:py-8 md:px-12">
           {renderDetailSection(packageData.cancellationPolicy)}
         </div>
 
         {packageData.additionalInfos.map((info, index) => (
-          <div key={index} className="border border-[#CCCCCC] rounded-2xl py-8 px-12">
+          <div key={index} className="border border-[#CCCCCC] rounded-2xl py-6 px-6 md:py-8 md:px-12">
             {renderDetailSection(info)}
           </div>
         ))}

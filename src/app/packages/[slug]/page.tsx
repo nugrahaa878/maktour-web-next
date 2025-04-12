@@ -11,7 +11,7 @@ const PackageDetails = async ({ params }: { params: Promise<{ slug: string }> })
     <main className="min-h-screen">
       <Navbar isWhiteBackground />
 
-      <div className="px-24 py-10">
+      <div className="md:px-24 md:py-10 px-4 py-10">
         <BreadCrumb items={[{
           href: '/packages',
           label: 'Package',
