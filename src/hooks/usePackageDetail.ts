@@ -2,7 +2,7 @@ import axios from "@/lib/axios"
 import { useEffect, useState } from "react"
 import { PackageDetailResponse } from "@/types/package"
 
-export const useGetPackageDetail = (id: string) => {
+export const useGetPackageDetail = (id: string, locale: string) => {
   const [data, setData] = useState<PackageDetailResponse | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
@@ -11,7 +11,7 @@ export const useGetPackageDetail = (id: string) => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get<PackageDetailResponse>(`/packages/${id}?locale=en`);
+        const response = await axios.get<PackageDetailResponse>(`/packages/${id}?locale=${locale}`);
         setData(response.data);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('An error occurred'));

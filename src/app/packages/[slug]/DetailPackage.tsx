@@ -38,7 +38,8 @@ interface HeadingNode {
 
 const DetailPackage = ({ documentId }: Props) => {
   const { language } = useLanguage();
-  const { data, isLoading, error } = useGetPackageDetail(documentId);
+  const baseLanguage = localStorage.getItem('language')
+  const { data, isLoading, error } = useGetPackageDetail(documentId, baseLanguage ?? 'en');
 
   const packageData = data?.data;
 
