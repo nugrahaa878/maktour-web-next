@@ -41,7 +41,7 @@ const PackageList = () => {
           </div>
           <div className="flex items-center justify-between">
             <span className="text-md text-white">{language === 'en' ? formatDollar(pkg.priceInUsd) : formatRupiah(pkg.priceInIdr)}</span>
-            <BookingButton />
+            <BookingButton id={pkg.documentId} />
           </div>
         </div>
       </div>

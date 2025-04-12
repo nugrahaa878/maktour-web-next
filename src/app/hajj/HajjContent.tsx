@@ -38,6 +38,21 @@ const HajjContent: FC = () => {
   return (
     <div className="container mx-auto px-4 py-16">
       <div className="flex flex-col md:flex-row gap-8">
+        <div className="w-full md:w-1/3 bg-white p-6 rounded-xl shadow-lg h-fit top-24 md:hidden">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 abhaya-libre">Hajj Guide</h2>
+          <div className="space-y-4">
+            {data?.data[0]?.content.map(content => (
+              <button
+                key={content.id}
+                onClick={() => handleContentSelect(content.id)}
+                className={`w-full text-left p-4 rounded-lg transition-all duration-200 ${selectedContent === content.id ? 'bg-[#FFC100] text-[#232323]' : 'hover:bg-gray-50'}`}
+              >
+                <h3 className="font-medium">{content.header}</h3>
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Left section - Content Cards */}
         <div className="w-full md:w-2/3 space-y-8">
           {data?.data[0]?.content.map((content, index) => (
@@ -82,7 +97,7 @@ const HajjContent: FC = () => {
         </div>
 
         {/* Right section - Content Menu */}
-        <div className="w-full md:w-1/3 bg-white p-6 rounded-xl shadow-lg h-fit sticky top-24">
+        <div className="w-full md:w-1/3 bg-white p-6 rounded-xl shadow-lg h-fit sticky top-24 hidden md:block">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 abhaya-libre">Hajj Guide</h2>
           <div className="space-y-4">
             {data?.data[0]?.content.map(content => (
