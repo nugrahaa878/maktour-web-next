@@ -170,30 +170,34 @@ const BlogContent: FC<Props> = ({ blogId, locale = "en" }) => {
   });
 
   return (
-    <article className="mx-auto px-28 py-8 flex gap-10">
-      <div>
-        <div className="relative h-[500px] rounded-xl overflow-hidden mb-8">
-          <Image
-            src={coverImage.file.formats.large.url}
-            alt={coverImage.alternativeText || title}
-            fill
-            className="object-cover"
-            priority
-          />
+    <article className="mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-6 md:py-8">
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-10">
+        <div className="w-full lg:w-2/3">
+          <div className="relative w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] rounded-xl overflow-hidden mb-6 md:mb-8">
+            <Image
+              src={coverImage.file.formats.large.url}
+              alt={coverImage.alternativeText || title}
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+
+          <header className="mb-6 md:mb-8">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 md:mb-4">{title}</h1>
+            <time className="text-sm md:text-base text-gray-600">
+              {formattedDate}
+            </time>
+          </header>
+
+          <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none">
+            {renderContentNodes(content)}
+          </div>
         </div>
-
-        <header className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
-          <time className="text-gray-600">
-            {formattedDate}
-          </time>
-        </header>
-
-        <div className="prose prose-lg max-w-none">
-          {renderContentNodes(content)}
+        <div className="w-full lg:w-1/3 mt-8 lg:mt-0">
+          <SearchBlog />
         </div>
       </div>
-      <SearchBlog />
     </article>
   );
 };
