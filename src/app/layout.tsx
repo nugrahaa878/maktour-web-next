@@ -23,7 +23,28 @@ const abhayaLibre = Abhaya_Libre({
 
 export const metadata: Metadata = {
   title: "Maktour Hajj & Umrah",
-  description: "Your trusted partner for Hajj and Umrah services",
+  description: "Your trusted partner for Hajj and Umrah services. We provide comprehensive packages for a meaningful spiritual journey to the holy lands.",
+  openGraph: {
+    title: "Maktour Hajj & Umrah",
+    description: "Your trusted partner for Hajj and Umrah services. We provide comprehensive packages for a meaningful spiritual journey to the holy lands.",
+    images: [
+      {
+        url: "/assets/images/kabah.png",
+        width: 1200,
+        height: 630,
+        alt: "Maktour Hajj & Umrah Services",
+      }
+    ],
+    siteName: "Maktour",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Maktour Hajj & Umrah",
+    description: "Your trusted partner for Hajj and Umrah services. We provide comprehensive packages for a meaningful spiritual journey to the holy lands.",
+    images: ["/assets/images/kabah.png"],
+  },
 };
 
 export default function RootLayout({
