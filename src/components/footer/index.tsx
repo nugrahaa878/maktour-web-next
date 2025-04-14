@@ -1,8 +1,23 @@
-import { FC } from 'react';
+'use client'
+
+import { FC, useState } from 'react';
 import Image from 'next/image';
 import maktourLogo from '../../../public/assets/images/maktour-logo.png';
+import useSubscribeNewsletter from '../../hooks/useSubscribeNewsletter';
 
 const Footer: FC = () => {
+  const [email, setEmail] = useState<string>('');
+  const { subscribeNewsletter, isLoading } = useSubscribeNewsletter();
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (email) {
+      await subscribeNewsletter(email);
+      setEmail('');
+    }
+  };
+
   return (
     <footer className="bg-[#2D2D2D] text-white">
       <div className="container mx-auto px-4 py-12">
@@ -33,7 +48,7 @@ const Footer: FC = () => {
               </a>
               <a href="#" className="text-gray-300 hover:text-amber-600 transition-colors">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                  <path d="M8.29 20.251c7.547 0 11.675-6 .253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                 </svg>
               </a>
             </div>
@@ -64,10 +79,39 @@ const Footer: FC = () => {
             </ul>
           </div>
 
+          <div className="mb-12 pb-8 border-gray-600">
+            <h2 className="text-3xl font-bold mb-6">Subscribe our Newsletter</h2>
+            <form onSubmit={handleSubscribe} className="flex md:flex-col sm:flex-row gap-2 max-w-2xl">
+              <div className="relative flex-grow">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="johndoe@gmail.com"
+                  className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-full text-white focus:outline-none focus:border-amber-600"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="flex-shrink-0 bg-amber-500 hover:bg-amber-600 transition-colors rounded-full p-3 focus:outline-none w-12"
+              >
+                {isLoading ? (
+                  <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                )}
+              </button>
+            </form>
+          </div>
+
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-gray-600 text-center text-gray-300">
+        <div className="mt-12 pt-8 text-center text-gray-300 border-t">
           <p>&copy; {new Date().getFullYear()} Maktour Copyright All Right Reserved</p>
         </div>
       </div>

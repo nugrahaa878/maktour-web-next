@@ -4,6 +4,7 @@ import "./globals.css";
 import { LanguageProvider } from '../context/LanguageContext';
 import Navbar from '@/components/navbar';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
+import ToastProvider from '@/context/ToastContext';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,9 +64,11 @@ export default function RootLayout({
         ></div>
         <div className="relative z-10 min-h-screen">
           <LanguageProvider>
-            <Navbar />
-            {children}
-            <WhatsAppFAB />
+            <ToastProvider>
+              <Navbar />
+              {children}
+              <WhatsAppFAB />
+            </ToastProvider>
           </LanguageProvider>
         </div>
       </body>
