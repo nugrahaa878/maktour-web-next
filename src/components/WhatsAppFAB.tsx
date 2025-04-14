@@ -77,7 +77,7 @@ const WhatsAppFAB = () => {
       )}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:shadow-xl"
+        className="bg-[#FFC100] text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:shadow-xl"
       >
         <Image
           src={whatsappIcon}
