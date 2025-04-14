@@ -95,10 +95,9 @@ const Navbar = ({ isWhiteBackground = false }: NavbarProps) => {
                 href="https://wa.me/+6281268522312312"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-green-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-colors duration-200 flex items-center space-x-2"
+                className="text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center space-x-2"
               >
-                <Image src={whatsappIcon} alt='whatsapp' className='w-6' />
-                <span className='font-bold'>{contactText}</span>
+                <span>{contactText}</span>
               </a>
             </div>
 
