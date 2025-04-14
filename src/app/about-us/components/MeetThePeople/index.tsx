@@ -12,11 +12,6 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
   { name: 'John Doe Situmorang', role: 'Agen Bandung' },
   { name: 'John Doe Situmorang', role: 'Agen Bandung' },
-  { name: 'John Doe Situmorang', role: 'Agen Bandung' },
-  { name: 'John Doe Situmorang', role: 'Agen Bandung' },
-  { name: 'John Doe Situmorang', role: 'Agen Bandung' },
-  { name: 'John Doe Situmorang', role: 'Agen Bandung' },
-  { name: 'John Doe Situmorang', role: 'Agen Bandung' },
 ];
 
 const MeetThePeople: FC = () => {
