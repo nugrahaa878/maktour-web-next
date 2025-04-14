@@ -12,6 +12,28 @@ const BlogSection: FC = () => {
   const router = useRouter();
   const { data, isLoading, error } = useGetBlog();
 
+  // Text content based on language
+  const content = {
+    en: {
+      sectionTitle: "Latest Blog Posts",
+      description: "Stay updated with our latest articles and insights about Hajj and Umrah journey",
+      readMore: "Read more",
+      errorMessage: "Error loading blog posts. Please try again later.",
+      loading: "Loading..."
+    },
+    id: {
+      sectionTitle: "Artikel Terbaru",
+      description: "Dapatkan informasi terbaru tentang perjalanan Haji dan Umrah melalui artikel kami",
+      readMore: "Baca selengkapnya",
+      errorMessage: "Gagal memuat artikel. Silakan coba lagi nanti.",
+      loading: "Memuat..."
+    }
+  };
+
+  // Get content based on current language
+  const { sectionTitle, description, readMore, errorMessage, loading } =
+    language === 'id' ? content.id : content.en;
+
   const allBlog = data?.data.filter((blog) => blog.locale === language);
 
   const featuredBlog = allBlog?.[0];
@@ -35,10 +57,11 @@ const BlogSection: FC = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 abhaya-libre">Latest Blog Posts</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 abhaya-libre">{sectionTitle}</h2>
             <div className="container mx-auto px-4 py-16">
               <div className="flex items-center justify-center min-h-[50vh]">
                 <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+                <span className="ml-3">{loading}</span>
               </div>
             </div>
           </div>
@@ -52,8 +75,8 @@ const BlogSection: FC = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 abhaya-libre">Latest Blog Posts</h2>
-            <p className="text-lg text-red-600 max-w-2xl mx-auto">Error loading blog posts. Please try again later.</p>
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 abhaya-libre">{sectionTitle}</h2>
+            <p className="text-lg text-red-600 max-w-2xl mx-auto">{errorMessage}</p>
           </div>
         </div>
       </section>
@@ -64,8 +87,8 @@ const BlogSection: FC = () => {
     <section className="py-8 md:py-16">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-4 abhaya-libre">Latest Blog Posts</h2>
-          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">Stay updated with our latest articles and insights about Hajj and Umrah journey</p>
+          <h2 className="text-2xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-4 abhaya-libre">{sectionTitle}</h2>
+          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">{description}</p>
         </div>
 
         {/* Featured Blog Post */}
@@ -95,8 +118,11 @@ const BlogSection: FC = () => {
               <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6">
                 {extractText(featuredBlog)}
               </p>
-              <button className="bg-[#FFC100] text-[#232323] px-6 md:px-8 py-2 md:py-3 rounded-2xl font-medium w-fit transition-all duration-200 hover:bg-[#FFD54F] hover:scale-105 hover:shadow-lg" onClick={() => router.push(`/blog/${featuredBlog.documentId}`)}>
-                Read more
+              <button
+                className="bg-[#FFC100] text-[#232323] px-6 md:px-8 py-2 md:py-3 rounded-2xl font-medium w-fit transition-all duration-200 hover:bg-[#FFD54F] hover:scale-105 hover:shadow-lg"
+                onClick={() => router.push(`/blog/${featuredBlog.documentId}`)}
+              >
+                {readMore}
               </button>
             </div>
           </div>
