@@ -81,7 +81,7 @@ const Footer: FC = () => {
 
           <div className="mb-12 pb-8 border-gray-600">
             <h2 className="text-3xl font-bold mb-6">Subscribe our Newsletter</h2>
-            <form onSubmit={handleSubscribe} className="flex md:flex-col sm:flex-row gap-2 max-w-2xl">
+            <form onSubmit={handleSubscribe} className="flex sm:flex-row gap-2 max-w-2xl">
               <div className="relative flex-grow">
                 <input
                   type="email"

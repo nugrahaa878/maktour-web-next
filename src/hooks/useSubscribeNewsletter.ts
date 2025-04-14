@@ -2,6 +2,8 @@ import { useState } from 'react';
 import axios from '@/lib/axios';
 import { useToast } from '@/context/ToastContext';
 
+const apiToken = process.env.NEXT_PUBLIC_MAKTOUR_API_TOKEN;
+
 interface CustomerUser {
   id: number;
   documentId: string;
@@ -31,7 +33,7 @@ const useSubscribeNewsletter = () => {
         { email },
         {
           headers: {
-            'x-api-token': 'ofkbg99vBRzfcikgRWnZZyvsHrS0VA9V',
+            'x-api-token': apiToken,
           },
         }
       );
