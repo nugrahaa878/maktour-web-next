@@ -95,7 +95,7 @@ const Navbar = ({ isWhiteBackground = false }: NavbarProps) => {
                 href="https://wa.me/+6281268522312312"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center space-x-2"
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center space-x-2 ${isScrolled || isWhiteBackground ? 'text-gray-800' : 'text-[#FFF9F9]'}`}
               >
                 <span>{contactText}</span>
               </a>
