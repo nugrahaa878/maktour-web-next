@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Abhaya_Libre } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from '../context/LanguageContext';
+import { FilterProvider } from '../context/FilterContext';
 import Navbar from '@/components/navbar';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
 import ToastProvider from '@/context/ToastContext';
@@ -65,9 +66,11 @@ export default function RootLayout({
         <div className="relative z-10 min-h-screen">
           <LanguageProvider>
             <ToastProvider>
-              <Navbar />
-              {children}
-              <WhatsAppFAB />
+              <FilterProvider>
+                <Navbar />
+                {children}
+                <WhatsAppFAB />
+              </FilterProvider>
             </ToastProvider>
           </LanguageProvider>
         </div>

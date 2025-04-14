@@ -9,36 +9,44 @@ import bgImage from '../../../../../public/assets/images/mekah-1.jpg';
 import { formatDollar, formatRupiah } from '@/lib/currencyFormatter';
 import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/context/LanguageContext';
-
-interface Package {
-  type: string;
-  title: string;
-  image: string;
-  description: string;
-  price: string;
-}
+import { useFilter } from '@/context/FilterContext';
+import PackageFilters from '../PackageFilters';
+import { PackageItem } from '@/types/package';
 
 const PackageCard: FC = () => {
   const { language } = useLanguage();
+  const { category, currency } = useFilter();
   const { data, isLoading } = useGetPackage();
   const packageList = data?.data.filter((pkg) => pkg.locale === language) ?? [];
   const router = useRouter();
 
+  // Filter packages by category
+  const filteredPackages = packageList.filter(pkg => {
+    if (category === 'all') return true;
+    const categoryMapping = {
+      'umrah': 'umrah',
+      'hajj': 'hajj',
+      'special': 'special program'
+    };
+    return pkg.category.toLowerCase() === categoryMapping[category];
+  });
+
   if (isLoading) {
     return (
-      <div className="container mx-auto px-4 py-16">
-        <div className="flex items-center justify-center min-h-[50vh]">
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex items-center justify-center min-h-[40vh]">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
         </div>
       </div>
     );
   }
 
-  if (!packageList.length) {
+  if (!filteredPackages.length) {
     return (
-      <div className="flex flex-col items-center py-10">
-        <p className="text-2xl font-semibold mb-5">Package Not Found</p>
-        <p className="text-gray-600">There are no Package right now</p>
+      <div className="flex flex-col items-center py-8">
+        <PackageFilters />
+        <p className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-5 text-center px-4">Package Not Found</p>
+        <p className="text-gray-600 text-center px-4">There are no packages matching the selected filters</p>
       </div>
     );
   }
@@ -47,16 +55,24 @@ const PackageCard: FC = () => {
     router.push(`/packages/${id}`)
   }
 
-  return (
-    <section className="py-16 flex flex-col items-center">
-      <h1 className="text-4xl md:text-5xl font-bold abhaya-libre text-center md:text-left mb-10">Our Packages</h1>
-      <div className="container mx-auto px-4">
+  // Format price based on selected currency
+  const formatPrice = (pkg: PackageItem) => {
+    if (currency === 'USD') {
+      return formatDollar(pkg.priceInUsd);
+    } else {
+      return formatRupiah(pkg.priceInIdr);
+    }
+  };
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {packageList.map((pkg, index) => (
+  return (
+    <section className="py-6 sm:py-8 flex flex-col items-center">
+      <PackageFilters />
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          {filteredPackages.map((pkg, index) => (
             <div
               key={index}
-              className="relative h-[500px] rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2"
+              className="relative h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2"
               onClick={() => handleClick(pkg.documentId)}
             >
               <Image
@@ -65,11 +81,11 @@ const PackageCard: FC = () => {
                 fill
                 className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-              <div className="absolute inset-0 p-6 flex flex-col justify-end">
+              <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end">
                 <Chip label={pkg.classification} className='w-fit mb-2 -ml-1' variant='primary' />
-                <h3 className="text-xl font-bold text-white mb-2">{pkg.name}</h3>
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{pkg.name}</h3>
                 <div className="flex items-center justify-between">
-                  <span className="text-md text-white">{language === 'en' ? formatDollar(pkg.priceInUsd) : formatRupiah(pkg.priceInIdr)} / person</span>
+                  <span className="text-sm sm:text-md text-white">{formatPrice(pkg)} / person</span>
                   <SeeDetailButton />
                 </div>
               </div>
@@ -77,7 +93,7 @@ const PackageCard: FC = () => {
           ))}
         </div>
       </div>
-    </section >
+    </section>
   );
 };
 
