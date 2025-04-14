@@ -1,22 +1,39 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
 import Image from 'next/image';
 import MobileMenuButton from './MobileMenuButton';
 import LanguageSwitcher from '../LanguageSwitcher';
 import maktourLogo from '../../../public/assets/images/maktour-logo.png';
 import whatsappIcon from '../../../public/assets/icons/whatsapp.png';
+import { useLanguage } from '@/context/LanguageContext';
 
-const menuItems = [
-  { name: 'About Us', path: '/about-us' },
-  { name: 'Umrah & Ziyarah', path: '/umrah' },
-  { name: 'Hajj', path: '/hajj' },
-  { name: 'Packages', path: '/packages' },
-  { name: 'Help', path: '/help' },
-  { name: 'TnC', path: '/tnc' },
-  { name: 'Privacy', path: '/privacy-policy' },
-];
+// Custom hook import
+
+const getMenuItems = (language: string) => {
+  if (language === 'id') {
+    return [
+      { name: 'Tentang Kami', path: '/about-us' },
+      { name: 'Umrah & Ziarah', path: '/umrah' },
+      { name: 'Haji', path: '/hajj' },
+      { name: 'Paket', path: '/packages' },
+      { name: 'Bantuan', path: '/help' },
+      { name: 'Syarat & Ketentuan', path: '/tnc' },
+      { name: 'Privasi', path: '/privacy-policy' },
+    ];
+  } else {
+    return [
+      { name: 'About Us', path: '/about-us' },
+      { name: 'Umrah & Ziyarah', path: '/umrah' },
+      { name: 'Hajj', path: '/hajj' },
+      { name: 'Packages', path: '/packages' },
+      { name: 'Help', path: '/help' },
+      { name: 'TnC', path: '/tnc' },
+      { name: 'Privacy', path: '/privacy-policy' },
+    ];
+  }
+};
 
 interface NavbarProps {
   isWhiteBackground?: boolean;
@@ -24,6 +41,11 @@ interface NavbarProps {
 
 const Navbar = ({ isWhiteBackground = false }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(isWhiteBackground);
+  const { language } = useLanguage();
+  const menuItems = getMenuItems(language);
+
+  // Contact button text based on language
+  const contactText = language === 'id' ? 'Hubungi Kami' : 'Contact Us';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,12 +76,12 @@ const Navbar = ({ isWhiteBackground = false }: NavbarProps) => {
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-8 overflow whitespace-nowrap">
               {menuItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.path}
-                  className={`hover:text-amber-500 px-3 py-2 text-md font-medium transition-colors duration-200 ${isScrolled || isWhiteBackground ? 'text-gray-800' : 'text-[#FFF9F9]'}`}
+                  className={`hover:text-amber-500 px-2 py-2 text-sm font-medium transition-colors duration-200 ${isScrolled || isWhiteBackground ? 'text-gray-800' : 'text-[#FFF9F9]'}`}
                 >
                   {item.name}
                 </Link>
@@ -76,7 +98,7 @@ const Navbar = ({ isWhiteBackground = false }: NavbarProps) => {
                 className="bg-green-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-colors duration-200 flex items-center space-x-2"
               >
                 <Image src={whatsappIcon} alt='whatsapp' className='w-6' />
-                <span className='font-bold'>Contact Us</span>
+                <span className='font-bold'>{contactText}</span>
               </a>
             </div>
 
