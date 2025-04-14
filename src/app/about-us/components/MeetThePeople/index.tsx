@@ -16,7 +16,7 @@ const teamMembers: TeamMember[] = [
 
 const MeetThePeople: FC = () => {
   return (
-    <section className="py-12 md:py-40">
+    <section className="py-12 md:py-20">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-5xl font-bold text-center text-gray-900 mb-8 md:mb-12 abhaya-libre">
           Meet the People
