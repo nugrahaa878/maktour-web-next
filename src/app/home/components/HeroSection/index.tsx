@@ -5,7 +5,7 @@ import HeroCarousel from './HeroCarousel';
 
 const HeroSection: FC = () => {
   return (
-    <section className="flex items-center relative pt-40 pb-10">
+    <section className="flex items-center relative pt-36 md:pt-40 pb-10">
       <HeroCarousel />
 
       <div className="relative w-full container mx-auto md:px-4 flex flex-col justify-center items-center z-10 text-center">
