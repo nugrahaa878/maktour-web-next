@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import maktourLogo from '../../../public/assets/images/maktour-logo.png';
@@ -14,12 +14,26 @@ type MobileMenuProps = {
 export default function MobileMenuButton({ menuItems }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Prevent scrolling when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   return (
     <>
       <div className="md:hidden flex items-center">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100"
+          className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-amber-500 hover:bg-gray-100 transition-colors duration-200"
+          aria-expanded={isOpen}
         >
           <span className="sr-only">Open main menu</span>
           {!isOpen ? (
@@ -56,69 +70,82 @@ export default function MobileMenuButton({ menuItems }: MobileMenuProps) {
         </button>
       </div>
 
-      {isOpen && (
-        <div className="md:hidden fixed inset-0 top-16 bg-black bg-opacity-50">
-          <div className="fixed inset-x-0 top-0 h-[100vh] w-full bg-white shadow-lg transform transition-all duration-300 ease-in-out overflow-y-auto px-4 py-6">
-            <div className='flex items-center justify-between'>
-              <Link href="/" className="flex items-center">
-                <Image
-                  src={maktourLogo}
-                  alt="Maktour Hajj Logo"
-                  width={256}
-                  height={256}
-                  className="h-20 w-auto"
-                />
-              </Link>
+      {/* Mobile menu overlay with animation */}
+      <div
+        className={`md:hidden fixed inset-0 bg-black transition-opacity duration-300 ease-in-out z-40 ${isOpen ? 'opacity-50 visible' : 'opacity-0 invisible'
+          }`}
+        onClick={() => setIsOpen(false)}
+      />
 
-              <button
-                onClick={() => setIsOpen(false)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100"
+      {/* Mobile menu slide-in panel */}
+      <div
+        className={`md:hidden fixed inset-y-0 right-0 w-[85%] max-w-xs bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-50 ${isOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+      >
+        <div className="h-full flex flex-col">
+          {/* Header with logo and close button */}
+          <div className='flex items-center justify-between p-4 border-b border-gray-200'>
+            <Link href="/" className="flex-shrink-0" onClick={() => setIsOpen(false)}>
+              <Image
+                src={maktourLogo}
+                alt="Maktour Hajj Logo"
+                width={150}
+                height={150}
+                className="h-14 w-auto"
+                priority
+              />
+            </Link>
+
+            <button
+              onClick={() => setIsOpen(false)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+            >
+              <span className="sr-only">Close menu</span>
+              <svg
+                className="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                <span className="sr-only">Close menu</span>
-                <svg
-                  className="block h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div className="space-y-1">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+
+          {/* Menu items */}
+          <div className="flex-1 overflow-y-auto py-4 px-6">
+            <nav className="space-y-2">
               {menuItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.path}
-                  className="text-black hover:text-amber-200 block px-3 py-3 text-lg font-medium"
+                  className="block py-3 text-base font-medium text-gray-800 hover:text-amber-500 hover:bg-amber-50 rounded-md px-3 transition-colors duration-200"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
-            </div>
-            <LanguageSwitcher isScrolled />
-            <button>
-              <a
-                href="https://wa.me/+6281234567890"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-colors duration-200 flex items-center space-x-2 ml-2 mt-4"
-              >
-                <Image src={whatsappIcon} alt='whatsapp' className='w-6' />
-                <span className='font-bold'>Contact Us</span>
-              </a>
-            </button>
+            </nav>
+          </div>
 
+          {/* Footer with language switcher and contact button */}
+          <div className="p-6 border-t border-gray-200 space-y-4">
+            {/* Language switcher with better mobile styling */}
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium text-gray-600">Language</span>
+              <div className="w-auto">
+                <LanguageSwitcher isScrolled={true} />
+              </div>
+            </div>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 }

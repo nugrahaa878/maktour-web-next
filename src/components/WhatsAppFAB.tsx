@@ -14,7 +14,7 @@ const WhatsAppFAB = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-6 right-6 z-40">
       {isOpen && (
         <div className="absolute bottom-16 right-0 w-xs md:w-md bg-white rounded-lg shadow-lg overflow-hidden mb-4">
           <div className="bg-[#25D366] text-white p-4">
