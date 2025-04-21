@@ -1,16 +1,12 @@
 import { FC } from 'react';
-import heroImage from '../../../../../public/assets/images/kabah.png';
-import Image from 'next/image';
 import { ExploreButton } from './ExploreButton';
 import PreviewPackages from '../PreviewPackage';
+import HeroCarousel from './HeroCarousel';
 
 const HeroSection: FC = () => {
   return (
     <section className="flex items-center relative pt-40 pb-10">
-      <div className="absolute inset-0">
-        <Image src={heroImage} alt="Hero Background" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/50"></div>
-      </div>
+      <HeroCarousel />
 
       <div className="relative w-full container mx-auto md:px-4 flex flex-col justify-center items-center z-10 text-center">
         <div className='px-8'>
