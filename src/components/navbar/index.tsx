@@ -19,8 +19,6 @@ const getMenuItems = (language: string) => {
       { name: 'Haji', path: '/hajj' },
       { name: 'Paket', path: '/packages' },
       { name: 'Bantuan', path: '/help' },
-      { name: 'Syarat & Ketentuan', path: '/tnc' },
-      { name: 'Privasi', path: '/privacy-policy' },
     ];
   } else {
     return [
@@ -29,8 +27,6 @@ const getMenuItems = (language: string) => {
       { name: 'Hajj', path: '/hajj' },
       { name: 'Packages', path: '/packages' },
       { name: 'Help', path: '/help' },
-      { name: 'TnC', path: '/tnc' },
-      { name: 'Privacy', path: '/privacy-policy' },
     ];
   }
 };

@@ -2,12 +2,15 @@
 
 import { FC, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import maktourLogo from '../../../public/assets/images/maktour-logo.png';
 import useSubscribeNewsletter from '../../hooks/useSubscribeNewsletter';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Footer: FC = () => {
   const [email, setEmail] = useState<string>('');
   const { subscribeNewsletter, isLoading } = useSubscribeNewsletter();
+  const { language } = useLanguage();
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,6 +20,17 @@ const Footer: FC = () => {
       setEmail('');
     }
   };
+
+  // Translate text based on selected language
+  const tncText = language === 'id' ? 'Syarat & Ketentuan' : 'Terms & Conditions';
+  const privacyText = language === 'id' ? 'Privasi' : 'Privacy Policy';
+  const quickLinksText = language === 'id' ? 'Tautan Cepat' : 'Quick Links';
+  const subscribeText = language === 'id' ? 'Berlangganan Newsletter Kami' : 'Subscribe our Newsletter';
+  const aboutUsText = language === 'id' ? 'Tentang Kami' : 'About Us';
+  const umrahText = language === 'id' ? 'Umrah & Ziarah' : 'Umrah & Ziyarah';
+  const hajjText = language === 'id' ? 'Haji' : 'Hajj';
+  const packagesText = language === 'id' ? 'Paket' : 'Packages';
+  const helpText = language === 'id' ? 'Bantuan' : 'Help';
 
   return (
     <footer className="bg-[#2D2D2D] text-white">
@@ -56,31 +70,48 @@ const Footer: FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-xl font-semibold mb-4">{quickLinksText}</h3>
             <ul className="space-y-2">
               <li>
-                <a href="/about-us" className="text-gray-300 hover:text-amber-600 transition-colors">About Us</a>
+                <Link href="/about-us" className="text-gray-300 hover:text-amber-600 transition-colors">
+                  {aboutUsText}
+                </Link>
               </li>
               <li>
-                <a href="/umrah" className="text-gray-300 hover:text-amber-600 transition-colors">Umrah & Ziyarah</a>
+                <Link href="/umrah" className="text-gray-300 hover:text-amber-600 transition-colors">
+                  {umrahText}
+                </Link>
               </li>
               <li>
-                <a href="/hajj" className="text-gray-300 hover:text-amber-600 transition-colors">Hajj</a>
+                <Link href="/hajj" className="text-gray-300 hover:text-amber-600 transition-colors">
+                  {hajjText}
+                </Link>
               </li>
               <li>
-                <a href="/packages" className="text-gray-300 hover:text-amber-600 transition-colors">Packages</a>
+                <Link href="/packages" className="text-gray-300 hover:text-amber-600 transition-colors">
+                  {packagesText}
+                </Link>
               </li>
               <li>
-                <a href="/help" className="text-gray-300 hover:text-amber-600 transition-colors">Help</a>
+                <Link href="/help" className="text-gray-300 hover:text-amber-600 transition-colors">
+                  {helpText}
+                </Link>
               </li>
               <li>
-                <a href="/tnc" className="text-gray-300 hover:text-amber-600 transition-colors">TnC</a>
+                <Link href="/tnc" className="text-gray-300 hover:text-amber-600 transition-colors">
+                  {tncText}
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy-policy" className="text-gray-300 hover:text-amber-600 transition-colors">
+                  {privacyText}
+                </Link>
               </li>
             </ul>
           </div>
 
           <div className="mb-12 pb-8 border-gray-600">
-            <h2 className="text-3xl font-bold mb-6">Subscribe our Newsletter</h2>
+            <h2 className="text-3xl font-bold mb-6">{subscribeText}</h2>
             <form onSubmit={handleSubscribe} className="flex sm:flex-row gap-2 max-w-2xl">
               <div className="relative flex-grow">
                 <input
