@@ -21,33 +21,36 @@ const PackageList = () => {
     </div>
   }
 
-  return <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-7 md:px-0">
-    {listPackage.map((pkg, index) => (
-      <div
-        key={index}
-        className="relative h-[500px] rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2"
-      >
-        <Image
-          src={bgCard}
-          alt={pkg.name}
-          fill
-          className="object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-        <div className="absolute inset-0 p-6 flex flex-col justify-end">
-          <Chip label={pkg.classification} className='w-fit mb-2 -ml-1' variant='primary' />
-          <h3 className="text-xl font-bold text-white mb-2">{pkg.name}</h3>
+  return (
+    <div className="md:px-0">
+      <div className="flex md:grid overflow-x-auto gap-8 px-7 md:px-0 md:grid-cols-2 lg:grid-cols-3 no-scrollbar">
+        {listPackage.map((pkg, index) => (
+          <div
+            key={index}
+            className="relative h-[500px] min-w-[300px] md:min-w-0 rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2"
+          >
+            <Image
+              src={bgCard}
+              alt={pkg.name}
+              fill
+              className="object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div className="absolute inset-0 p-6 flex flex-col justify-end">
+              <Chip label={pkg.classification} className='w-fit mb-2 -ml-1' variant='primary' />
+              <h3 className="text-xl font-bold text-white mb-2">{pkg.name}</h3>
 
-          <div className="space-y-2 mb-6">
+              <div className="space-y-2 mb-6">
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-md text-white">{language === 'en' ? formatDollar(pkg.priceInUsd) : formatRupiah(pkg.priceInIdr)}</span>
+                <BookingButton id={pkg.documentId} />
+              </div>
+            </div>
           </div>
-          <div className="flex items-center justify-between">
-            <span className="text-md text-white">{language === 'en' ? formatDollar(pkg.priceInUsd) : formatRupiah(pkg.priceInIdr)}</span>
-            <BookingButton id={pkg.documentId} />
-          </div>
-        </div>
+        ))}
       </div>
-    ))}
-  </div>
-
+    </div>
+  )
 }
 
 export default PackageList;
