@@ -28,7 +28,7 @@ const PreviewPackages = () => {
       </div>
 
       {/* Divider between second and third item */}
-      <div className="w-2 bg-white h-52 hidden md:block"></div>
+      <div className="w-0.5 bg-white h-52 hidden md:block"></div>
 
       {/* Third item */}
       <div className="flex flex-col items-center">
