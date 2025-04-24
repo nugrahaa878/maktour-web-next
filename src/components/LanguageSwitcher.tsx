@@ -3,9 +3,10 @@ import { useLanguage } from '../context/LanguageContext';
 
 interface Props {
   isScrolled: boolean;
+  isWhiteBackground?: boolean;
 }
 
-const LanguageSwitcher = ({ isScrolled }: Props) => {
+const LanguageSwitcher = ({ isScrolled, isWhiteBackground }: Props) => {
   const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -50,7 +51,7 @@ const LanguageSwitcher = ({ isScrolled }: Props) => {
     <div className="relative z-50" ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
-        className={`flex items-center justify-between space-x-1 px-3 py-2 rounded-md transition-colors duration-200 ${isScrolled ? 'text-gray-700' : 'text-white'
+        className={`flex items-center justify-between space-x-1 px-3 py-2 rounded-md transition-colors duration-200 ${isScrolled || isWhiteBackground ? 'text-gray-700' : 'text-white'
           } ${isMobile ? 'w-28 bg-gray-50' : ''}`}
         aria-expanded={isOpen}
         aria-haspopup="true"

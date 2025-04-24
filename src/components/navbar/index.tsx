@@ -85,7 +85,7 @@ const Navbar = ({ isWhiteBackground = false }: NavbarProps) => {
 
             {/* Right side buttons */}
             <div className="hidden md:flex items-center space-x-4">
-              <LanguageSwitcher isScrolled={isScrolled} />
+              <LanguageSwitcher isScrolled={isScrolled} isWhiteBackground={isWhiteBackground} />
               <a
                 href="https://wa.me/+6281268522312312"
                 target="_blank"
