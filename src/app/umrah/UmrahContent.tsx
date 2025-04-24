@@ -38,7 +38,7 @@ const UmrahContent: FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-4 pt-8">
       <div className="flex flex-col md:flex-row gap-8">
         <div className="w-full md:w-1/3 bg-white p-6 rounded-xl shadow-lg h-fit top-24 md:hidden">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 abhaya-libre">Umrah Guide</h2>

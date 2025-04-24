@@ -13,12 +13,17 @@ const PackageDetails = async ({ params }: { params: Promise<{ slug: string }> })
 
       <div className="md:px-24 md:py-10 px-4 py-10">
         <BreadCrumb items={[{
-          href: '/packages',
-          label: 'Package',
+          href: '/',
+          label: 'Home',
         }, {
-          href: '/asd',
+          href: '/packages',
+          label: 'Packages',
+        },
+        {
+          href: '#',
           label: 'Detail Package',
-        }]} />
+        },
+        ]} />
       </div>
 
       <DetailPackage documentId={documentId} />

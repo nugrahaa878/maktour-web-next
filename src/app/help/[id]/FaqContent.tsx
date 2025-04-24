@@ -16,7 +16,7 @@ const FaqContent = ({ faqId }: Props) => {
   const router = useRouter();
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
-  const { getFaqFilteredById, isLoading, error } = useGetFaq();
+  const { getFaqFilteredById, isLoading } = useGetFaq();
   const faqs = getFaqFilteredById(faqId);
 
   const toggleFaq = (index: number) => {
