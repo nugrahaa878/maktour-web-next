@@ -5,6 +5,7 @@ import { useGetTnc } from '@/hooks/useGetTnc';
 import { ContentNode, TextNode } from '@/types/tnc';
 import { useLanguage } from '@/context/LanguageContext';
 import { useGetPrivacyPolicy } from '@/hooks/useGetPrivacyPolicy';
+import Loader from '@/components/Loader';
 
 type ListItemNode = {
   type: 'list-item';
@@ -19,15 +20,7 @@ const PrivacyPolicyContent: FC = () => {
   const { data, isLoading, error } = useGetPrivacyPolicy();
 
   if (isLoading) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="container mx-auto px-4 py-16">
-          <div className="flex items-center justify-center min-h-[50vh]">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-          </div>
-        </div>
-      </div>
-    );
+    return <Loader />
   }
 
   if (error) {

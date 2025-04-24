@@ -6,6 +6,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { useRouter } from 'next/navigation';
+import Loader from '@/components/Loader';
 
 const BlogSection: FC = () => {
   const { language } = useLanguage();
@@ -58,12 +59,7 @@ const BlogSection: FC = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 abhaya-libre">{sectionTitle}</h2>
-            <div className="container mx-auto px-4 py-16">
-              <div className="flex items-center justify-center min-h-[50vh]">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-                <span className="ml-3">{loading}</span>
-              </div>
-            </div>
+            <Loader />
           </div>
         </div>
       </section>

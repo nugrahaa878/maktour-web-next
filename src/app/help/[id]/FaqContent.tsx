@@ -1,5 +1,6 @@
 'use client'
 
+import Loader from "@/components/Loader";
 import { useLanguage } from "@/context/LanguageContext";
 import { useGetFaq } from "@/hooks/useGetFaq";
 import { useRouter } from "next/navigation";
@@ -25,13 +26,7 @@ const FaqContent = ({ faqId }: Props) => {
   const filterLanguageFaq = faqs?.filter((faq) => faq.locale === language) ?? [];
 
   if (isLoading) {
-    return (
-      <div className="container mx-auto px-4 py-16">
-        <div className="flex items-center justify-center min-h-[50vh]">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-        </div>
-      </div>
-    );
+    return <Loader />
   }
 
   if (!faqs.length) {

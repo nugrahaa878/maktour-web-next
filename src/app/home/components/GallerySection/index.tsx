@@ -4,6 +4,7 @@ import { useGetGallery } from '@/hooks/useGetGallery';
 import { DesktopGallery } from './DesktopGallery';
 import { MobileGallery } from './MobileGallery';
 import { useLanguage } from '@/context/LanguageContext';
+import Loader from '@/components/Loader';
 
 const GallerySection = () => {
   const { data, isLoading, error } = useGetGallery();
@@ -41,12 +42,7 @@ const GallerySection = () => {
   if (isLoading) {
     return (
       <section className="py-10 md:py-16">
-        <div className="container mx-auto px-4 py-16">
-          <div className="flex items-center justify-center min-h-[50vh]">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-            <span className="ml-3">{loading}</span>
-          </div>
-        </div>
+        <Loader />
       </section>
     );
   }

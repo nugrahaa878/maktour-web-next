@@ -12,6 +12,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { useFilter } from '@/context/FilterContext';
 import PackageFilters from '../PackageFilters';
 import { PackageItem } from '@/types/package';
+import Loader from '@/components/Loader';
 
 const PackageCard: FC = () => {
   const { language } = useLanguage();
@@ -32,13 +33,7 @@ const PackageCard: FC = () => {
   });
 
   if (isLoading) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-center min-h-[40vh]">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-        </div>
-      </div>
-    );
+    return <Loader />
   }
 
   if (!filteredPackages.length) {

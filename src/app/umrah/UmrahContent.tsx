@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useGetUmrahInfo } from '@/hooks/useGetUmrahInfo';
 import { UmrahInfoContent } from '@/types/umrah';
 import { FaBookOpen } from 'react-icons/fa';
+import Loader from '@/components/Loader';
 
 const UmrahContent: FC = () => {
   const { data, isLoading, error } = useGetUmrahInfo();
@@ -23,15 +24,7 @@ const UmrahContent: FC = () => {
   };
 
   if (isLoading) {
-    return (
-      <div className="container mx-auto px-4 py-16">
-        <div className="container mx-auto px-4 py-16">
-          <div className="flex items-center justify-center min-h-[50vh]">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-          </div>
-        </div>
-      </div>
-    );
+    return <Loader />
   }
 
   if (error) {

@@ -6,7 +6,6 @@ import Image from 'next/image';
 import MobileMenuButton from './MobileMenuButton';
 import LanguageSwitcher from '../LanguageSwitcher';
 import maktourLogo from '../../../public/assets/images/maktour-logo.png';
-import whatsappIcon from '../../../public/assets/icons/whatsapp.png';
 import { useLanguage } from '@/context/LanguageContext';
 
 // Custom hook import
