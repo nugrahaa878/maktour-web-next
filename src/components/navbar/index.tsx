@@ -86,14 +86,12 @@ const Navbar = ({ isWhiteBackground = false }: NavbarProps) => {
             {/* Right side buttons */}
             <div className="hidden md:flex items-center space-x-4">
               <LanguageSwitcher isScrolled={isScrolled} isWhiteBackground={isWhiteBackground} />
-              <a
-                href="https://wa.me/+6281268522312312"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/contact-us"
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center space-x-2 ${isScrolled || isWhiteBackground ? 'text-gray-800' : 'text-[#FFF9F9]'}`}
               >
                 <span>{contactText}</span>
-              </a>
+              </Link>
             </div>
 
             {/* Mobile Menu */}
