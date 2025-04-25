@@ -14,7 +14,7 @@ const FaqSection: FC = () => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-  const faqs = data?.data.filter((faq) => faq.locale === language) || [];
+  const faqs = data?.data.filter((faq) => (faq.locale === language && faq.displayOnHomePage)) || [];
 
   return (
     <section className="w-full py-8 md:py-16">

@@ -18,6 +18,7 @@ export interface FaqItem {
   updatedAt: string;
   publishedAt: string;
   locale: string;
+  displayOnHomePage?: boolean;
   faqCategory: FaqCategory | null;
 }
 
