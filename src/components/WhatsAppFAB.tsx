@@ -21,7 +21,7 @@ const WhatsAppFAB = () => {
     <div className="fixed bottom-6 right-6 z-40">
       {isOpen && (
         <div className="absolute bottom-16 right-0 w-xs md:w-md bg-white rounded-lg shadow-lg overflow-hidden mb-4">
-          <div className="bg-[#25D366] text-white p-4">
+          <div className="bg-[#FFC100] text-white p-4">
             <h3 className="text-2xl font-semibold mb-2">Halo</h3>
             <p className="text-sm">
               Klik salah satu perwakilan kami di bawah ini untuk berbicara via WhatsApp
