@@ -4,13 +4,17 @@ import { useState } from 'react';
 import Image from 'next/image';
 import whatsappIcon from '../../public/assets/icons/whatsapp.png';
 import { useGetCustomerService } from '../hooks/useGetCustomerService';
+import { useGetWhatsappTemplate } from '@/hooks/useGetWhatsappTemplate';
 
 const WhatsAppFAB = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { customerServices, loading, error } = useGetCustomerService();
+  const { template } = useGetWhatsappTemplate();
 
   const handleCSSelect = (phoneNumber: string) => {
-    window.open(`https://wa.me/${phoneNumber}`, '_blank');
+    // Encode the template message for the URL
+    const encodedMessage = encodeURIComponent(template);
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
   };
 
   return (
