@@ -164,59 +164,7 @@ const UmrahContent: FC = () => {
       </div>
 
       <div className="flex flex-col md:flex-row gap-8">
-        {/* Left section - Submenu accordion */}
-        <div className="w-full md:w-1/3 bg-white p-6 rounded-xl shadow-lg">
-          {data.data
-            .filter(menu => menu.id === activeMenu)
-            .map(menu => (
-              <div key={menu.id} className="space-y-3">
-                {menu.submenus.map(submenu => (
-                  <div
-                    key={submenu.id}
-                    className="mb-2 rounded-lg overflow-hidden shadow-sm bg-gray-50 transition-all duration-200"
-                  >
-                    <button
-                      onClick={() => toggleSubmenu(submenu.id)}
-                      className={`w-full flex justify-between items-center p-4 rounded-t-lg ${activeSubmenu === submenu.id
-                        ? 'bg-gray-100 text-gray-900 font-semibold'
-                        : 'bg-white text-gray-700 hover:bg-gray-50'
-                        }`}
-                    >
-                      <span className="font-medium text-left">{submenu.title}</span>
-                      <span className="text-gray-500 transition-transform duration-200 ml-2">
-                        {expandedSubmenus[submenu.id] ? <FaChevronUp size={14} /> : <FaChevronDown size={14} />}
-                      </span>
-                    </button>
-
-                    {expandedSubmenus[submenu.id] && (
-                      <div className="px-2 py-3 bg-white rounded-b-lg">
-                        {submenu.contents.map(content => (
-                          <button
-                            key={content.id}
-                            onClick={() => {
-                              handleSubmenuSelect(submenu.id);
-                              handleContentSelect(content.id);
-                            }}
-                            className={`w-full text-left p-3 my-1 rounded-lg transition-all ${activeContent === content.id
-                              ? 'bg-[#FFC100] text-[#232323] shadow-sm'
-                              : 'text-gray-600 hover:bg-gray-50'
-                              }`}
-                          >
-                            <div className="flex items-center">
-                              <div className={`w-1.5 h-1.5 rounded-full mr-2 ${activeContent === content.id ? 'bg-[#232323]' : 'bg-gray-300'}`}></div>
-                              <span>{content.title}</span>
-                            </div>
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            ))}
-        </div>
-
-        {/* Right section - Content Display */}
+        {/* Right section - Content Display (moved to left) */}
         <div className="w-full md:w-2/3">
           {currentContent && (
             <div className="bg-white p-6 rounded-xl shadow-lg">
@@ -268,6 +216,61 @@ const UmrahContent: FC = () => {
               </div>
             </div>
           )}
+        </div>
+
+        {/* Left section - Submenu accordion (moved to right) */}
+        <div className="w-full md:w-1/3">
+          <div className="bg-white p-6 rounded-xl shadow-lg">
+            <h2 className="text-xl font-bold mb-4 abhaya-libre">Umrah Guide</h2>
+            {data.data
+              .filter(menu => menu.id === activeMenu)
+              .map(menu => (
+                <div key={menu.id} className="space-y-3">
+                  {menu.submenus.map(submenu => (
+                    <div
+                      key={submenu.id}
+                      className="mb-2 rounded-lg overflow-hidden shadow-sm bg-gray-50 transition-all duration-200"
+                    >
+                      <button
+                        onClick={() => toggleSubmenu(submenu.id)}
+                        className={`w-full flex justify-between items-center p-4 rounded-t-lg ${activeSubmenu === submenu.id
+                          ? 'bg-gray-100 text-gray-900 font-semibold'
+                          : 'bg-white text-gray-700 hover:bg-gray-50'
+                          }`}
+                      >
+                        <span className="font-medium text-left">{submenu.title}</span>
+                        <span className="text-gray-500 transition-transform duration-200 ml-2">
+                          {expandedSubmenus[submenu.id] ? <FaChevronUp size={14} /> : <FaChevronDown size={14} />}
+                        </span>
+                      </button>
+
+                      {expandedSubmenus[submenu.id] && (
+                        <div className="px-2 py-3 bg-white rounded-b-lg">
+                          {submenu.contents.map(content => (
+                            <button
+                              key={content.id}
+                              onClick={() => {
+                                handleSubmenuSelect(submenu.id);
+                                handleContentSelect(content.id);
+                              }}
+                              className={`w-full text-left p-3 my-1 rounded-lg transition-all ${activeContent === content.id
+                                ? 'bg-[#FFC100] text-[#232323] shadow-sm'
+                                : 'text-gray-600 hover:bg-gray-50'
+                                }`}
+                            >
+                              <div className="flex items-center">
+                                <div className={`w-1.5 h-1.5 rounded-full mr-2 ${activeContent === content.id ? 'bg-[#232323]' : 'bg-gray-300'}`}></div>
+                                <span>{content.title}</span>
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ))}
+          </div>
         </div>
       </div>
     </div>
