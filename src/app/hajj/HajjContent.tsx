@@ -151,8 +151,8 @@ const HajjContent: FC = () => {
             key={menu.id}
             onClick={() => handleMenuSelect(menu.id)}
             className={`flex flex-col items-center justify-center px-6 py-3 whitespace-nowrap rounded-lg transition-all ${activeMenu === menu.id
-              ? 'bg-[#FFC100] text-[#232323]'
-              : 'bg-white text-gray-600 hover:bg-gray-50'
+                ? 'bg-[#FFC100] text-[#232323]'
+                : 'bg-white text-gray-600 hover:bg-gray-50'
               }`}
           >
             <div className="text-xl mb-1">
@@ -161,6 +161,57 @@ const HajjContent: FC = () => {
             <span className="font-medium">{menu.title}</span>
           </button>
         ))}
+      </div>
+
+      {/* Mobile Submenu - Shown between main menu and content on mobile */}
+      <div className="md:hidden mb-6">
+        {activeMenu && (
+          <div className="bg-white p-4 rounded-xl shadow-lg">
+            <h2 className="text-lg font-bold mb-3 abhaya-libre">
+              {data.data.find(menu => menu.id === activeMenu)?.title}
+            </h2>
+            <div className="flex overflow-x-auto gap-2 pb-2 scrollbar-hide">
+              {data.data
+                .find(menu => menu.id === activeMenu)
+                ?.submenus.map(submenu => (
+                  <button
+                    key={submenu.id}
+                    onClick={() => handleSubmenuSelect(submenu.id)}
+                    className={`px-4 py-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all ${activeSubmenu === submenu.id
+                        ? 'bg-[#FFC100] text-[#232323]'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                  >
+                    {submenu.title}
+                  </button>
+                ))}
+            </div>
+
+            {/* Show content items for selected submenu */}
+            {activeSubmenu && (
+              <div className="mt-3 pt-3 border-t border-gray-100">
+                {data.data
+                  .find(menu => menu.id === activeMenu)
+                  ?.submenus.find(submenu => submenu.id === activeSubmenu)
+                  ?.contents.map(content => (
+                    <button
+                      key={content.id}
+                      onClick={() => handleContentSelect(content.id)}
+                      className={`w-full text-left p-2 my-1 rounded-lg transition-all ${activeContent === content.id
+                          ? 'bg-gray-100 text-gray-900 font-medium'
+                          : 'text-gray-600 hover:bg-gray-50'
+                        }`}
+                    >
+                      <div className="flex items-center">
+                        <div className={`w-1.5 h-1.5 rounded-full mr-2 ${activeContent === content.id ? 'bg-[#232323]' : 'bg-gray-300'}`}></div>
+                        <span>{content.title}</span>
+                      </div>
+                    </button>
+                  ))}
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col md:flex-row gap-8">
@@ -218,8 +269,8 @@ const HajjContent: FC = () => {
           )}
         </div>
 
-        {/* Left section - Submenu accordion (moved to right) */}
-        <div className="w-full md:w-1/3">
+        {/* Left section - Submenu accordion (moved to right) - HIDE ON MOBILE */}
+        <div className="w-full md:w-1/3 hidden md:block">
           <div className="bg-white p-6 rounded-xl shadow-lg">
             <h2 className="text-xl font-bold mb-4 abhaya-libre">Hajj Guide</h2>
             {data.data
