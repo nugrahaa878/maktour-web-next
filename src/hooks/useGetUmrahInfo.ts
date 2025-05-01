@@ -1,6 +1,10 @@
 import axios from "@/lib/axios"
 import { useEffect, useState } from "react"
 import { UmrahInfoResponse } from "@/types/umrah"
+import { mockUmrahService } from "@/services/mockUmrahService"
+
+// Set this to true to use mock data instead of real API
+const USE_MOCK_API = true;
 
 export const useGetUmrahInfo = () => {
   const [data, setData] = useState<UmrahInfoResponse | null>(null);
@@ -11,8 +15,19 @@ export const useGetUmrahInfo = () => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get<UmrahInfoResponse>('/umroh-info');
-        setData(response.data);
+
+        let responseData: UmrahInfoResponse;
+
+        if (USE_MOCK_API) {
+          // Use mock data
+          responseData = await mockUmrahService.getUmrahInfo();
+        } else {
+          // Use real API
+          const response = await axios.get<UmrahInfoResponse>('/umrah-info');
+          responseData = response.data;
+        }
+
+        setData(responseData);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('An error occurred'));
       } finally {

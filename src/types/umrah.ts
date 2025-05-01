@@ -32,23 +32,40 @@ export interface UmrahInfoMedia {
   };
 }
 
-export interface UmrahInfoContent {
+export interface UmrahContent {
   id: number;
-  header: string;
-  content: string;
-  imagePosition: string;
-  media: UmrahInfoMedia;
+  title: string;
+  content: ContentBlock[];
+  coverImage: UmrahInfoMedia;
+}
+
+export interface UmrahSubmenu {
+  id: number;
+  title: string;
+  contents: UmrahContent[];
+}
+
+export interface UmrahMenu {
+  id: number;
+  title: string;
+  icon: string;
+  submenus: UmrahSubmenu[];
+}
+
+export interface ContentBlock {
+  type: string;
+  level?: number;
+  format?: string;
+  children: Array<{
+    text: string;
+    type: string;
+    bold?: boolean;
+    italic?: boolean;
+    underline?: boolean;
+  }>;
 }
 
 export interface UmrahInfoResponse {
-  data: {
-    id: number;
-    documentId: string;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
-    locale: string;
-    content: UmrahInfoContent[];
-  }[];
+  data: UmrahMenu[];
   meta: Record<string, unknown>;
 } 
