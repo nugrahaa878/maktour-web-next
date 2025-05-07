@@ -2,6 +2,7 @@ import PlanWithUs from "@/components/PlanWithUs";
 import VisionMision from "./components/VisionMision";
 import MeetThePeople from "./components/MeetThePeople";
 import OurPartners from "./components/OurPartners";
+import PartnerHotels from "./components/PartnerHotels";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import AboutMaktour from "./components/AboutMaktour";
@@ -26,6 +27,7 @@ const AboutUs = () => {
       <VisionMision />
       <MeetThePeople />
       <OurPartners />
+      <PartnerHotels />
       <Footer />
     </main>
   );
