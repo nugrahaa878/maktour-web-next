@@ -418,12 +418,12 @@ export const mockHajjData: HajjInfoResponse = {
                 file: {
                   id: 5,
                   name: "spiritual-hajj.jpg",
-                  url: "https://images.unsplash.com/photo-1564869733264-4e471349a3d7",
+                  url: "https://plus.unsplash.com/premium_photo-1661901768187-7f218aa951a0?q=80&w=3142&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                   formats: {
-                    large: { url: "https://images.unsplash.com/photo-1564869733264-4e471349a3d7", width: 1200, height: 800 },
-                    medium: { url: "https://images.unsplash.com/photo-1564869733264-4e471349a3d7", width: 750, height: 500 },
-                    small: { url: "https://images.unsplash.com/photo-1564869733264-4e471349a3d7", width: 500, height: 300 },
-                    thumbnail: { url: "https://images.unsplash.com/photo-1564869733264-4e471349a3d7", width: 250, height: 150 }
+                    large: { url: "https://plus.unsplash.com/premium_photo-1661901768187-7f218aa951a0?q=80&w=3142&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", width: 1200, height: 800 },
+                    medium: { url: "https://plus.unsplash.com/premium_photo-1661901768187-7f218aa951a0?q=80&w=3142&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", width: 750, height: 500 },
+                    small: { url: "https://plus.unsplash.com/premium_photo-1661901768187-7f218aa951a0?q=80&w=3142&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", width: 500, height: 300 },
+                    thumbnail: { url: "https://plus.unsplash.com/premium_photo-1661901768187-7f218aa951a0?q=80&w=3142&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", width: 250, height: 150 }
                   }
                 }
               }

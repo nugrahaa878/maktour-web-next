@@ -295,12 +295,12 @@ export const mockUmrahData: UmrahInfoResponse = {
                 file: {
                   id: 4,
                   name: "tawaf.jpg",
-                  url: "https://images.unsplash.com/photo-1591121213541-28a3f215919f",
+                  url: "https://images.unsplash.com/photo-1590108589108-3600131de843?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                   formats: {
-                    large: { url: "https://images.unsplash.com/photo-1591121213541-28a3f215919f", width: 1200, height: 800 },
-                    medium: { url: "https://images.unsplash.com/photo-1591121213541-28a3f215919f", width: 750, height: 500 },
-                    small: { url: "https://images.unsplash.com/photo-1591121213541-28a3f215919f", width: 500, height: 300 },
-                    thumbnail: { url: "https://images.unsplash.com/photo-1591121213541-28a3f215919f", width: 250, height: 150 }
+                    large: { url: "https://images.unsplash.com/photo-1590108589108-3600131de843?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", width: 1200, height: 800 },
+                    medium: { url: "https://images.unsplash.com/photo-1590108589108-3600131de843?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", width: 750, height: 500 },
+                    small: { url: "https://images.unsplash.com/photo-1590108589108-3600131de843?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", width: 500, height: 300 },
+                    thumbnail: { url: "https://images.unsplash.com/photo-1590108589108-3600131de843?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", width: 250, height: 150 }
                   }
                 }
               }
@@ -462,12 +462,12 @@ export const mockUmrahData: UmrahInfoResponse = {
                 file: {
                   id: 6,
                   name: "makkah-hotels.jpg",
-                  url: "https://images.unsplash.com/photo-1610553556003-9b2ae8ef1d8e",
+                  url: "https://images.unsplash.com/photo-1571909552531-1601eaec8f79?q=80&w=3131&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                   formats: {
-                    large: { url: "https://images.unsplash.com/photo-1610553556003-9b2ae8ef1d8e", width: 1200, height: 800 },
-                    medium: { url: "https://images.unsplash.com/photo-1610553556003-9b2ae8ef1d8e", width: 750, height: 500 },
-                    small: { url: "https://images.unsplash.com/photo-1610553556003-9b2ae8ef1d8e", width: 500, height: 300 },
-                    thumbnail: { url: "https://images.unsplash.com/photo-1610553556003-9b2ae8ef1d8e", width: 250, height: 150 }
+                    large: { url: "https://images.unsplash.com/photo-1571909552531-1601eaec8f79?q=80&w=3131&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", width: 1200, height: 800 },
+                    medium: { url: "https://images.unsplash.com/photo-1571909552531-1601eaec8f79?q=80&w=3131&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", width: 750, height: 500 },
+                    small: { url: "https://images.unsplash.com/photo-1571909552531-1601eaec8f79?q=80&w=3131&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", width: 500, height: 300 },
+                    thumbnail: { url: "https://images.unsplash.com/photo-1571909552531-1601eaec8f79?q=80&w=3131&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", width: 250, height: 150 }
                   }
                 }
               }
