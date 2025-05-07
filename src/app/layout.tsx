@@ -6,6 +6,7 @@ import { FilterProvider } from '../context/FilterContext';
 import Navbar from '@/components/navbar';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
 import ToastProvider from '@/context/ToastContext';
+import ClientBackgroundImage from '@/components/ClientBackgroundImage';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -59,10 +60,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${abhayaLibre.variable} antialiased min-h-screen relative`}
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-fixed bg-no-repeat opacity-20 z-0"
-          style={{ backgroundImage: 'url(/assets/images/bg-main.jpg)' }}
-        ></div>
+        <ClientBackgroundImage />
         <div className="relative z-10 min-h-screen">
           <LanguageProvider>
             <ToastProvider>
