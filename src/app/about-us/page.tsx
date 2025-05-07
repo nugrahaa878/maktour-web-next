@@ -26,8 +26,8 @@ const AboutUs = () => {
       <PlanWithUs />
       <VisionMision />
       <MeetThePeople />
-      <OurPartners />
-      <PartnerHotels />
+      {/* <OurPartners /> */}
+      {/* <PartnerHotels /> */}
       <Footer />
     </main>
   );
