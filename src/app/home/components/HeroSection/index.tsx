@@ -21,10 +21,10 @@ const HeroSection: FC = () => {
         </div>
 
         <PreviewPackages />
-        <div className='h-14'></div>
+        <div className='h-28 md:h-16'></div>
       </div>
       {/* Overlay for vertical blurred transition to the next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white/90 via-white/50 to-transparent z-[5] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/80 to-transparent z-[5] pointer-events-none"></div>
     </section>
   );
 }
