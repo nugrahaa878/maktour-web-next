@@ -126,7 +126,7 @@ const Footer: FC = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="flex-shrink-0 bg-amber-500 hover:bg-amber-600 transition-colors rounded-full p-3 focus:outline-none w-12"
+                className="flex-shrink-0 bg-[#DCB04B] hover:bg-[#B68923] transition-colors rounded-full p-3 focus:outline-none w-12 cursor-pointer"
               >
                 {isLoading ? (
                   <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>

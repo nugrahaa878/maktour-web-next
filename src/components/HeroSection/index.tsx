@@ -40,7 +40,7 @@ const HeroSection: FC<HeroSectionProps> = ({ title, description, buttonText, bac
             {description}
           </p>
 
-          <button className="bg-yellow-500 hover:bg-yellow-600 text-black py-3 px-8 rounded-full transition-all" onClick={handleClick}>
+          <button className="bg-[#DCB04B] hover:bg-[#B68923] text-black py-3 px-8 rounded-full transition-all" onClick={handleClick}>
             {buttonText}
           </button>
         </div>

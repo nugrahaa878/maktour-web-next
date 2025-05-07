@@ -67,7 +67,7 @@ const HeroSectionSearch: FC<HeroSectionProps> = ({
             <div className="flex gap-2 w-full sm:w-auto">
               <button
                 onClick={handleSearch}
-                className="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-600 text-black py-3 px-8 rounded-full transition-all"
+                className="w-full sm:w-auto bg-[#DCB04B] hover:bg-[#B68923] text-black py-3 px-8 rounded-full transition-all"
               >
                 Search
               </button>

@@ -21,7 +21,7 @@ const WhatsAppFAB = () => {
     <div className="fixed bottom-6 right-6 z-40">
       {isOpen && (
         <div className="absolute bottom-16 right-0 w-xs md:w-md bg-white rounded-lg shadow-lg overflow-hidden mb-4">
-          <div className="bg-[#FFC100] text-white p-4">
+          <div className="bg-[#DCB04B] text-white p-4">
             <h3 className="text-2xl font-semibold mb-2">Halo</h3>
             <p className="text-sm">
               Klik salah satu perwakilan kami di bawah ini untuk berbicara via WhatsApp
@@ -81,7 +81,7 @@ const WhatsAppFAB = () => {
       )}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-[#FFC100] text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:shadow-xl"
+        className="bg-[#DCB04B] text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:shadow-xl"
       >
         <Image
           src={whatsappIcon}

@@ -143,7 +143,7 @@ const UmrahContent: FC = () => {
   const activeSubmenuData = getActiveSubmenuData();
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 pb-20">
       {/* Top Menu Navigation */}
       <div className="flex overflow-x-auto pb-4 gap-2 mb-8 scrollbar-hide">
         {data.data.map(menu => (
@@ -151,8 +151,8 @@ const UmrahContent: FC = () => {
             key={menu.id}
             onClick={() => handleMenuSelect(menu.id)}
             className={`flex flex-col items-center justify-center px-6 py-3 whitespace-nowrap rounded-lg transition-all ${activeMenu === menu.id
-                ? 'bg-[#FFC100] text-[#232323]'
-                : 'bg-white text-gray-600 hover:bg-gray-50'
+              ? 'bg-[#DCB04B] text-[#232323]'
+              : 'bg-white text-gray-600 hover:bg-gray-50'
               }`}
           >
             <div className="text-xl mb-1">
@@ -178,8 +178,8 @@ const UmrahContent: FC = () => {
                     key={submenu.id}
                     onClick={() => handleSubmenuSelect(submenu.id)}
                     className={`px-4 py-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all ${activeSubmenu === submenu.id
-                        ? 'bg-[#FFC100] text-[#232323]'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-[#DCB04B] text-[#232323]'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                   >
                     {submenu.title}
@@ -198,8 +198,8 @@ const UmrahContent: FC = () => {
                       key={content.id}
                       onClick={() => handleContentSelect(content.id)}
                       className={`w-full text-left p-2 my-1 rounded-lg transition-all ${activeContent === content.id
-                          ? 'bg-gray-100 text-gray-900 font-medium'
-                          : 'text-gray-600 hover:bg-gray-50'
+                        ? 'bg-gray-100 text-gray-900 font-medium'
+                        : 'text-gray-600 hover:bg-gray-50'
                         }`}
                     >
                       <div className="flex items-center">
@@ -305,7 +305,7 @@ const UmrahContent: FC = () => {
                                 handleContentSelect(content.id);
                               }}
                               className={`w-full text-left p-3 my-1 rounded-lg transition-all ${activeContent === content.id
-                                ? 'bg-[#FFC100] text-[#232323] shadow-sm'
+                                ? 'bg-[#DCB04B] text-[#232323] shadow-sm'
                                 : 'text-gray-600 hover:bg-gray-50'
                                 }`}
                             >

@@ -8,15 +8,13 @@ export default function ClientBackgroundImage() {
 
   return (
     <div
-      className="absolute inset-0 bg-repeat opacity-20 z-0"
+      className="absolute inset-0 bg-repeat opacity-10 z-0"
       style={{
-        backgroundImage: isHajjOrUmrahPage
-          ? 'url(/assets/images/bg-main.jpg)'
-          : 'url(/assets/images/bg-main-3.svg)',
-        backgroundSize: isHajjOrUmrahPage ? 'cover' : '600px',
-        backgroundPosition: isHajjOrUmrahPage ? 'center' : 'initial',
-        backgroundAttachment: isHajjOrUmrahPage ? 'fixed' : 'initial',
-        backgroundRepeat: isHajjOrUmrahPage ? 'no-repeat' : 'repeat'
+        backgroundImage: 'url(/assets/images/bg-main-3.svg)',
+        backgroundSize: '600px',
+        backgroundPosition: 'initial',
+        backgroundAttachment: 'initial',
+        backgroundRepeat: 'repeat'
       }}
     ></div>
   );

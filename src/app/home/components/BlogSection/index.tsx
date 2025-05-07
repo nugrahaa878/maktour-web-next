@@ -115,7 +115,7 @@ const BlogSection: FC = () => {
                 {extractText(featuredBlog)}
               </p>
               <button
-                className="bg-[#FFC100] text-[#232323] px-6 md:px-8 py-2 md:py-3 rounded-2xl font-medium w-fit transition-all duration-200 hover:bg-[#FFD54F] hover:scale-105 hover:shadow-lg"
+                className="bg-[#DCB04B] text-[#232323] px-6 md:px-8 py-2 md:py-3 rounded-2xl font-medium w-fit transition-all duration-200 hover:bg-[#FFD54F] hover:scale-105 hover:shadow-lg"
                 onClick={() => router.push(`/blog/${featuredBlog.documentId}`)}
               >
                 {readMore}
