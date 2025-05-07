@@ -36,7 +36,7 @@ const PackageHighlights: FC = () => {
   const { title, description } = language === 'id' ? content.id : content.en;
 
   return (
-    <section className="py-16">
+    <section className="relative py-16">
       <div className="container md:mx-auto md:px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 abhaya-libre">
@@ -51,6 +51,7 @@ const PackageHighlights: FC = () => {
         <ExploreMoreButton />
 
       </div>
+      <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-t from-white/5 via-white/90 to-transparent z-[5] pointer-events-none"></div>
     </section>
   );
 };
