@@ -14,7 +14,7 @@ const getMenuItems = (language: string) => {
   if (language === 'id') {
     return [
       { name: 'Tentang Kami', path: '/about-us' },
-      { name: 'Umrah & Ziarah', path: '/umrah' },
+      { name: 'Umrah', path: '/umrah' },
       { name: 'Haji', path: '/hajj' },
       { name: 'Paket', path: '/packages' },
       { name: 'Bantuan', path: '/help' },
@@ -22,7 +22,7 @@ const getMenuItems = (language: string) => {
   } else {
     return [
       { name: 'About Us', path: '/about-us' },
-      { name: 'Umrah & Ziyarah', path: '/umrah' },
+      { name: 'Umrah', path: '/umrah' },
       { name: 'Hajj', path: '/hajj' },
       { name: 'Packages', path: '/packages' },
       { name: 'Help', path: '/help' },
