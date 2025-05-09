@@ -27,7 +27,7 @@ const Footer: FC = () => {
   const quickLinksText = language === 'id' ? 'Tautan Cepat' : 'Quick Links';
   const subscribeText = language === 'id' ? 'Berlangganan Newsletter Kami' : 'Subscribe our Newsletter';
   const aboutUsText = language === 'id' ? 'Tentang Kami' : 'About Us';
-  const umrahText = language === 'id' ? 'Umrah & Ziarah' : 'Umrah & Ziyarah';
+  const umrahText = language === 'id' ? 'Umroh' : 'Umrah';
   const hajjText = language === 'id' ? 'Haji' : 'Hajj';
   const packagesText = language === 'id' ? 'Paket' : 'Packages';
   const helpText = language === 'id' ? 'Bantuan' : 'Help';
