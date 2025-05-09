@@ -10,7 +10,7 @@ const HeroSection: FC = () => {
 
       <div className="relative w-full container mx-auto md:px-4 flex flex-col justify-center items-center z-10 text-center">
         <div className='px-8'>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 max-w-2xl abhaya-libre">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 max-w-2xl">
             A Journey of Faith, <br />Guided with Excellence
           </h1>
           <p className="text-sm text-white/90 mb-8 md:mb-12 max-w-xl">
