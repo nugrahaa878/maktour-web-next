@@ -17,9 +17,6 @@
   }
 }
 
-.abhaya-libre {
-  font-family: var(--font-abhaya-libre), serif;
-}
 
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
